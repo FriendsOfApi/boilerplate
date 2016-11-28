@@ -12,8 +12,6 @@ namespace APIPHP\Boilerplate\Resource\Api;
 use APIPHP\Boilerplate\Resource\ApiResponse;
 
 /**
- *
- *
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
 final class ErrorResponse implements ApiResponse

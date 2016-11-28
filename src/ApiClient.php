@@ -14,8 +14,6 @@ use APIPHP\Boilerplate\Deserializer\ModelDeserializer;
 use APIPHP\Boilerplate\Deserializer\ResponseDeserializer;
 
 /**
- *
- *
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
 class ApiClient

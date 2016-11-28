@@ -32,9 +32,9 @@ final class TotalResponse implements ApiResponse
     private $count;
 
     /**
-     * @param \DateTime           $start
-     * @param \DateTime           $end
-     * @param int              $count
+     * @param \DateTime $start
+     * @param \DateTime $end
+     * @param int       $count
      */
     private function __construct(\DateTime $start, \DateTime $end, $count)
     {

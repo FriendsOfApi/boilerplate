@@ -9,12 +9,9 @@
 
 namespace APIPHP\Boilerplate\Api;
 
-use Http\Client\Exception as HttplugException;
 use Http\Client\HttpClient;
 use APIPHP\Boilerplate\Deserializer\ResponseDeserializer;
-use APIPHP\Boilerplate\Exception\HttpServerException;
 use APIPHP\Boilerplate\RequestBuilder;
-use APIPHP\Boilerplate\Resource\Api\ErrorResponse;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -52,25 +49,6 @@ abstract class HttpApi
     }
 
     /**
-     * Attempts to safely deserialize the response into the given class.
-     * If the HTTP return code != 200, deserializes into SimpleResponse::class
-     * to contain the error message and any other information provided.
-     *
-     * @param ResponseInterface $response
-     * @param string            $className
-     *
-     * @return $class|SimpleResponse
-     */
-    protected function safeDeserialize(ResponseInterface $response, $className)
-    {
-        if ($response->getStatusCode() !== 200) {
-            return $this->deserializer->deserialize($response, ErrorResponse::class);
-        } else {
-            return $this->deserializer->deserialize($response, $className);
-        }
-    }
-
-    /**
      * Send a GET request with query parameters.
      *
      * @param string $path           Request path.
@@ -85,15 +63,9 @@ abstract class HttpApi
             $path .= '?'.http_build_query($parameters);
         }
 
-        try {
-            $response = $this->httpClient->sendRequest(
-                $this->requestBuilder->create('GET', $path, $requestHeaders)
-            );
-        } catch (HttplugException\NetworkException $e) {
-            throw HttpServerException::networkError($e);
-        }
-
-        return $response;
+        return $this->httpClient->sendRequest(
+            $this->requestBuilder->create('GET', $path, $requestHeaders)
+        );
     }
 
     /**
@@ -121,15 +93,9 @@ abstract class HttpApi
      */
     protected function httpPostRaw($path, $body, array $requestHeaders = [])
     {
-        try {
-            $response = $this->httpClient->sendRequest(
-                $this->requestBuilder->create('POST', $path, $requestHeaders, $body)
-            );
-        } catch (HttplugException\NetworkException $e) {
-            throw HttpServerException::networkError($e);
-        }
-
-        return $response;
+        return $response = $this->httpClient->sendRequest(
+            $this->requestBuilder->create('POST', $path, $requestHeaders, $body)
+        );
     }
 
     /**
@@ -143,15 +109,9 @@ abstract class HttpApi
      */
     protected function httpPut($path, array $parameters = [], array $requestHeaders = [])
     {
-        try {
-            $response = $this->httpClient->sendRequest(
-                $this->requestBuilder->create('PUT', $path, $requestHeaders, $this->createJsonBody($parameters))
-            );
-        } catch (HttplugException\NetworkException $e) {
-            throw HttpServerException::networkError($e);
-        }
-
-        return $response;
+        return $this->httpClient->sendRequest(
+            $this->requestBuilder->create('PUT', $path, $requestHeaders, $this->createJsonBody($parameters))
+        );
     }
 
     /**
@@ -165,15 +125,9 @@ abstract class HttpApi
      */
     protected function httpDelete($path, array $parameters = [], array $requestHeaders = [])
     {
-        try {
-            $response = $this->httpClient->sendRequest(
-                $this->requestBuilder->create('DELETE', $path, $requestHeaders, $this->createJsonBody($parameters))
-            );
-        } catch (HttplugException\NetworkException $e) {
-            throw HttpServerException::networkError($e);
-        }
-
-        return $response;
+        return $this->httpClient->sendRequest(
+            $this->requestBuilder->create('DELETE', $path, $requestHeaders, $this->createJsonBody($parameters))
+        );
     }
 
     /**

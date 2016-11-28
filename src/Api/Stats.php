@@ -9,13 +9,10 @@
 
 namespace APIPHP\Boilerplate\Api;
 
-use APIPHP\Boilerplate\Assert;
 use APIPHP\Boilerplate\Exception\InvalidArgumentException;
-use APIPHP\Boilerplate\Resource\Api\Stats\AllResponse;
 use APIPHP\Boilerplate\Resource\Api\Stats\TotalResponse;
 
 /**
- *
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
 class Stats extends HttpApi
@@ -33,6 +30,8 @@ class Stats extends HttpApi
         }
 
         $response = $this->httpGet(sprintf('/v3/%s/stats/total', rawurlencode($username)), $params);
+
+        // TODO handle non 200 responses
 
         return $this->deserializer->deserialize($response, TotalResponse::class);
     }
