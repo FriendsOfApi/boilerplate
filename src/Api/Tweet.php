@@ -10,7 +10,6 @@
 namespace APIPHP\Boilerplate\Api;
 
 use APIPHP\Boilerplate\Exception\InvalidArgumentException;
-use APIPHP\Boilerplate\Resource\Api\Stats\TotalResponse;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
@@ -18,7 +17,7 @@ use APIPHP\Boilerplate\Resource\Api\Stats\TotalResponse;
 class Tweet extends HttpApi
 {
     /**
-     * @param array  $params
+     * @param array $params
      *
      * @return IndexResponse
      */
@@ -52,7 +51,7 @@ class Tweet extends HttpApi
     /**
      * @param string $message
      * @param string $location
-     * @param array $hashtags
+     * @param array  $hashtags
      *
      * @return CreateResponse
      */
@@ -80,10 +79,10 @@ class Tweet extends HttpApi
     }
 
     /**
-     * @param int $id
+     * @param int    $id
      * @param string $message
      * @param string $location
-     * @param array $hashtags
+     * @param array  $hashtags
      *
      * @return UpdateResponse
      */
@@ -109,7 +108,6 @@ class Tweet extends HttpApi
 
         return $this->deserializer->deserialize($response, UpdateResponse::class);
     }
-
 
     /**
      * @param int $id

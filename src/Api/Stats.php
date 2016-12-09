@@ -37,7 +37,7 @@ class Stats extends HttpApi
     }
 
     /**
-     * @param array  $params
+     * @param array $params
      *
      * @return TotalResponse
      */
