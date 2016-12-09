@@ -34,7 +34,7 @@ abstract class HttpApi
     /**
      * @var RequestBuilder
      */
-    protected $requestBuilder;
+    private $requestBuilder;
 
     /**
      * @param HttpClient           $httpClient
@@ -57,7 +57,7 @@ abstract class HttpApi
      *
      * @return ResponseInterface
      */
-    protected function httpGet($path, array $parameters = [], array $requestHeaders = [])
+    protected function httpGet($path, array $parameters = [], array $requestHeaders = []): ResponseInterface
     {
         if (count($parameters) > 0) {
             $path .= '?'.http_build_query($parameters);
@@ -77,7 +77,7 @@ abstract class HttpApi
      *
      * @return ResponseInterface
      */
-    protected function httpPost($path, array $parameters = [], array $requestHeaders = [])
+    protected function httpPost($path, array $parameters = [], array $requestHeaders = []): ResponseInterface
     {
         return $this->httpPostRaw($path, $this->createJsonBody($parameters), $requestHeaders);
     }
@@ -91,7 +91,7 @@ abstract class HttpApi
      *
      * @return ResponseInterface
      */
-    protected function httpPostRaw($path, $body, array $requestHeaders = [])
+    protected function httpPostRaw($path, $body, array $requestHeaders = []): ResponseInterface
     {
         return $response = $this->httpClient->sendRequest(
             $this->requestBuilder->create('POST', $path, $requestHeaders, $body)
@@ -107,7 +107,7 @@ abstract class HttpApi
      *
      * @return ResponseInterface
      */
-    protected function httpPut($path, array $parameters = [], array $requestHeaders = [])
+    protected function httpPut($path, array $parameters = [], array $requestHeaders = []): ResponseInterface
     {
         return $this->httpClient->sendRequest(
             $this->requestBuilder->create('PUT', $path, $requestHeaders, $this->createJsonBody($parameters))
@@ -123,7 +123,7 @@ abstract class HttpApi
      *
      * @return ResponseInterface
      */
-    protected function httpDelete($path, array $parameters = [], array $requestHeaders = [])
+    protected function httpDelete($path, array $parameters = [], array $requestHeaders = []): ResponseInterface
     {
         return $this->httpClient->sendRequest(
             $this->requestBuilder->create('DELETE', $path, $requestHeaders, $this->createJsonBody($parameters))
@@ -137,7 +137,7 @@ abstract class HttpApi
      *
      * @return null|string
      */
-    protected function createJsonBody(array $parameters)
+    private function createJsonBody(array $parameters)
     {
         return (count($parameters) === 0) ? null : json_encode($parameters, empty($parameters) ? JSON_FORCE_OBJECT : 0);
     }

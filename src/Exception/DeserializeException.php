@@ -11,6 +11,9 @@ namespace APIPHP\Boilerplate\Exception;
 
 use APIPHP\Boilerplate\Exception;
 
+/**
+ * @author Tobias Nyholm <tobias.nyholm@gmail.com>
+ */
 class DeserializeException extends \RuntimeException implements Exception
 {
 }

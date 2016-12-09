@@ -21,7 +21,7 @@ use Http\Client\Common\Plugin;
  *
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class HttpClientConfigurator
+final class HttpClientConfigurator
 {
     /**
      * @var string
@@ -62,7 +62,7 @@ class HttpClientConfigurator
     /**
      * @return string
      */
-    private function getEndpoint()
+    private function getEndpoint(): string
     {
         return $this->endpoint;
     }
@@ -72,7 +72,7 @@ class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function setEndpoint($endpoint)
+    public function setEndpoint(string $endpoint)
     {
         $this->endpoint = $endpoint;
 
@@ -82,7 +82,7 @@ class HttpClientConfigurator
     /**
      * @return string
      */
-    private function getApiKey()
+    private function getApiKey(): string
     {
         return $this->apiKey;
     }
@@ -92,7 +92,7 @@ class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function setApiKey($apiKey)
+    public function setApiKey(string $apiKey)
     {
         $this->apiKey = $apiKey;
 
@@ -102,7 +102,7 @@ class HttpClientConfigurator
     /**
      * @return UriFactory
      */
-    private function getUriFactory()
+    private function getUriFactory(): UriFactory
     {
         if ($this->uriFactory === null) {
             $this->uriFactory = UriFactoryDiscovery::find();
@@ -126,7 +126,7 @@ class HttpClientConfigurator
     /**
      * @return HttpClient
      */
-    private function getHttpClient()
+    private function getHttpClient(): HttpClient
     {
         if ($this->httpClient === null) {
             $this->httpClient = HttpClientDiscovery::find();

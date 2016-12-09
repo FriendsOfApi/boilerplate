@@ -23,6 +23,22 @@ $response = $apiClient->stats()->total();
 echo $response->getCount(); // 22;
 ```
 
+## Example
+
+This repository contains an example API client for FakeTwitter. The API server 
+for FakeTwitter has the following endpoints. 
+ 
+| Method | URI | Parameters |
+| ------ | --- | ---------- |
+| GET | /v1/tweets | (string) hashtag |
+| POST | /v1/tweets/new | (string) message, (string) location, (array) hashtags |
+| GET | /v1/tweets/{id} | |
+| PUT | /v1/tweets/{id}/edit | (string) message, (string) location, (array) hashtags |
+| DELETE | /v1/tweets/{id}/delete | |
+| GET | /v1/stats/{username} | (int) start, (int) end |
+| GET | /v1/stats/total | (int) start, (int) end|
+
+
 ## Develop
 
 You should split your API into categories. Each of those categories should have their own class in `API/`. 

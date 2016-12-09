@@ -21,15 +21,29 @@ class Stats extends HttpApi
      * @param string $username
      * @param array  $params
      *
-     * @return TotalResponse
+     * @return ShowResponse
      */
-    public function total($username, array $params = [])
+    public function show(string $username, array $params = [])
     {
         if (empty($username)) {
             throw new InvalidArgumentException('Username cannot be empty');
         }
 
-        $response = $this->httpGet(sprintf('/v3/%s/stats/total', rawurlencode($username)), $params);
+        $response = $this->httpGet(sprintf('/v1/stats/%s', rawurlencode($username)), $params);
+
+        // TODO handle non 200 responses
+
+        return $this->deserializer->deserialize($response, ShowResponse::class);
+    }
+
+    /**
+     * @param array $params
+     *
+     * @return TotalResponse
+     */
+    public function total(array $params = [])
+    {
+        $response = $this->httpGet('/v1/stats/total', $params);
 
         // TODO handle non 200 responses
 

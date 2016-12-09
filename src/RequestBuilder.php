@@ -17,7 +17,7 @@ use Psr\Http\Message\RequestInterface;
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class RequestBuilder
+final class RequestBuilder
 {
     /**
      * @var RequestFactory
@@ -46,7 +46,7 @@ class RequestBuilder
      *
      * @return RequestInterface
      */
-    public function create($method, $uri, array $headers = [], $body = null)
+    public function create($method, $uri, array $headers = [], $body = null): RequestInterface
     {
         if (!is_array($body)) {
             return $this->getRequestFactory()->createRequest($method, $uri, $headers, $body);
@@ -73,7 +73,7 @@ class RequestBuilder
     /**
      * @return RequestFactory
      */
-    private function getRequestFactory()
+    private function getRequestFactory(): RequestFactory
     {
         if ($this->requestFactory === null) {
             $this->requestFactory = MessageFactoryDiscovery::find();
@@ -87,7 +87,7 @@ class RequestBuilder
      *
      * @return RequestBuilder
      */
-    public function setRequestFactory($requestFactory)
+    public function setRequestFactory(RequestFactory $requestFactory)
     {
         $this->requestFactory = $requestFactory;
 
@@ -97,7 +97,7 @@ class RequestBuilder
     /**
      * @return MultipartStreamBuilder
      */
-    private function getMultipartStreamBuilder()
+    private function getMultipartStreamBuilder(): MultipartStreamBuilder
     {
         if ($this->multipartStreamBuilder === null) {
             $this->multipartStreamBuilder = new MultipartStreamBuilder();
@@ -111,7 +111,7 @@ class RequestBuilder
      *
      * @return RequestBuilder
      */
-    public function setMultipartStreamBuilder($multipartStreamBuilder)
+    public function setMultipartStreamBuilder(MultipartStreamBuilder $multipartStreamBuilder)
     {
         $this->multipartStreamBuilder = $multipartStreamBuilder;
 

@@ -9,6 +9,8 @@
 
 namespace APIPHP\Boilerplate;
 
+use APIPHP\Boilerplate\Api\Stats;
+use APIPHP\Boilerplate\Api\Tweet;
 use Http\Client\Common\HttpMethodsClient;
 use APIPHP\Boilerplate\Deserializer\ModelDeserializer;
 use APIPHP\Boilerplate\Deserializer\ResponseDeserializer;
@@ -55,9 +57,17 @@ class ApiClient
     }
 
     /**
+     * @return Api\Tweet
+     */
+    public function tweets(): Tweet
+    {
+        return new Api\Tweet($this->httpClient, $this->requestBuilder, $this->deserializer);
+    }
+
+    /**
      * @return Api\Stats
      */
-    public function stats()
+    public function stats(): Stats
     {
         return new Api\Stats($this->httpClient, $this->requestBuilder, $this->deserializer);
     }

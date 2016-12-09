@@ -24,9 +24,9 @@ class ModelDeserializer implements ResponseDeserializer
      * @param ResponseInterface $response
      * @param string            $class
      *
-     * @return ResponseInterface
+     * @return mixed
      */
-    public function deserialize(ResponseInterface $response, $class)
+    public function deserialize(ResponseInterface $response, string $class)
     {
         $body = $response->getBody()->__toString();
         if (strpos($response->getHeaderLine('Content-Type'), 'application/json') !== 0) {
