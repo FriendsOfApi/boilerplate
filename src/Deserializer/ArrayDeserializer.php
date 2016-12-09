@@ -25,7 +25,7 @@ class ArrayDeserializer implements ResponseDeserializer
      *
      * @return array
      */
-    public function deserialize(ResponseInterface $response, $class)
+    public function deserialize(ResponseInterface $response, string $class): array
     {
         $body = $response->getBody()->__toString();
         if (strpos($response->getHeaderLine('Content-Type'), 'application/json') !== 0) {

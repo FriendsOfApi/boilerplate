@@ -21,5 +21,5 @@ interface ApiResponse
      *
      * @return self
      */
-    public static function create(array $data);
+    public static function create(array $data): self;
 }

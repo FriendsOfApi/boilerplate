@@ -22,5 +22,5 @@ interface ResponseDeserializer
      *
      * @return mixed
      */
-    public function deserialize(ResponseInterface $response, $class);
+    public function deserialize(ResponseInterface $response, string $class);
 }
