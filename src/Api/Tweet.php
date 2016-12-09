@@ -10,6 +10,11 @@
 namespace APIPHP\Boilerplate\Api;
 
 use APIPHP\Boilerplate\Exception\InvalidArgumentException;
+use APIPHP\Boilerplate\Resource\Api\Tweet\CreateResponse;
+use APIPHP\Boilerplate\Resource\Api\Tweet\DeleteResponse;
+use APIPHP\Boilerplate\Resource\Api\Tweet\IndexResponse;
+use APIPHP\Boilerplate\Resource\Api\Tweet\ShowResponse;
+use APIPHP\Boilerplate\Resource\Api\Tweet\UpdateResponse;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
