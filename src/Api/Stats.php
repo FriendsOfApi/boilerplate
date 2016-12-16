@@ -7,6 +7,7 @@
 
 namespace FAPI\Boilerplate\Api;
 
+use APIPHP\Boilerplate\Exception;
 use FAPI\Boilerplate\Exception\InvalidArgumentException;
 use FAPI\Boilerplate\Model\Stats\ShowResponse;
 use FAPI\Boilerplate\Model\Stats\TotalResponse;
@@ -21,6 +22,8 @@ class Stats extends HttpApi
      * @param array  $params
      *
      * @return ShowResponse
+     *
+     * @throws Exception
      */
     public function show(string $username, array $params = [])
     {
@@ -30,7 +33,10 @@ class Stats extends HttpApi
 
         $response = $this->httpGet(sprintf('/v1/stats/%s', rawurlencode($username)), $params);
 
-        // TODO handle non 200 responses
+        // Use any valid status code here
+        if ($response->getStatusCode() !== 200) {
+            $this->handleErrors($response);
+        }
 
         return $this->hydrator->hydrate($response, ShowResponse::class);
     }
@@ -44,7 +50,10 @@ class Stats extends HttpApi
     {
         $response = $this->httpGet('/v1/stats/total', $params);
 
-        // TODO handle non 200 responses
+        // Use any valid status code here
+        if ($response->getStatusCode() !== 200) {
+            $this->handleErrors($response);
+        }
 
         return $this->hydrator->hydrate($response, TotalResponse::class);
     }

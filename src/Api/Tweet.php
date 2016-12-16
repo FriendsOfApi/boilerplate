@@ -7,6 +7,8 @@
 
 namespace FAPI\Boilerplate\Api;
 
+use FAPI\Boilerplate\Exception;
+use FAPI\Boilerplate\Exception\Domain as DomainExceptions;
 use FAPI\Boilerplate\Exception\InvalidArgumentException;
 use FAPI\Boilerplate\Model\Tweet\CreateResponse;
 use FAPI\Boilerplate\Model\Tweet\DeleteResponse;
@@ -23,12 +25,17 @@ class Tweet extends HttpApi
      * @param array $params
      *
      * @return IndexResponse
+     *
+     * @throws Exception
      */
     public function index(array $params = [])
     {
         $response = $this->httpGet('/v1/tweets', $params);
 
-        // TODO handle non 200 responses
+        // Use any valid status code here
+        if ($response->getStatusCode() !== 200) {
+            $this->handleErrors($response);
+        }
 
         return $this->hydrator->hydrate($response, IndexResponse::class);
     }
@@ -37,6 +44,8 @@ class Tweet extends HttpApi
      * @param int $id
      *
      * @return ShowResponse
+     *
+     * @throws Exception
      */
     public function show(int $id)
     {
@@ -46,7 +55,10 @@ class Tweet extends HttpApi
 
         $response = $this->httpGet(sprintf('/v1/tweets/%d', $id));
 
-        // TODO handle non 200 responses
+        // Use any valid status code here
+        if ($response->getStatusCode() !== 200) {
+            $this->handleErrors($response);
+        }
 
         return $this->hydrator->hydrate($response, ShowResponse::class);
     }
@@ -57,6 +69,8 @@ class Tweet extends HttpApi
      * @param array  $hashtags
      *
      * @return CreateResponse
+     *
+     * @throws Exception
      */
     public function create(string $message, string $location, array $hashtags = [])
     {
@@ -76,7 +90,18 @@ class Tweet extends HttpApi
 
         $response = $this->httpPost('/v1/tweets/new', $params);
 
-        // TODO handle non 200 responses
+        // Use any valid status code here
+        if ($response->getStatusCode() !== 201) {
+            switch ($response->getStatusCode()) {
+                case 400:
+                    throw new DomainExceptions\ValidationException();
+                    break;
+
+                default:
+                    $this->handleErrors($response);
+                    break;
+            }
+        }
 
         return $this->hydrator->hydrate($response, CreateResponse::class);
     }
@@ -88,6 +113,8 @@ class Tweet extends HttpApi
      * @param array  $hashtags
      *
      * @return UpdateResponse
+     *
+     * @throws Exception
      */
     public function update(int $id, string $message, string $location, array $hashtags = [])
     {
@@ -107,7 +134,18 @@ class Tweet extends HttpApi
 
         $response = $this->httpPut(sprintf('/v1/tweets/%d/edit', $id), $params);
 
-        // TODO handle non 200 responses
+        // Use any valid status code here
+        if ($response->getStatusCode() !== 200) {
+            switch ($response->getStatusCode()) {
+                case 400:
+                    throw new DomainExceptions\ValidationException();
+                    break;
+
+                default:
+                    $this->handleErrors($response);
+                    break;
+            }
+        }
 
         return $this->hydrator->hydrate($response, UpdateResponse::class);
     }
@@ -116,6 +154,8 @@ class Tweet extends HttpApi
      * @param int $id
      *
      * @return DeleteResponse
+     *
+     * @throws Exception
      */
     public function delete(int $id)
     {
@@ -125,7 +165,10 @@ class Tweet extends HttpApi
 
         $response = $this->httpDelete(sprintf('/v1/tweets/%d', $id));
 
-        // TODO handle non 200 responses
+        // Use any valid status code here
+        if ($response->getStatusCode() !== 200) {
+            $this->handleErrors($response);
+        }
 
         return $this->hydrator->hydrate($response, DeleteResponse::class);
     }
