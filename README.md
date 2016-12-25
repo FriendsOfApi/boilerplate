@@ -45,9 +45,9 @@ You should split your API into categories. Each of those categories should have 
 Example `Api/Stats`. The response of any call should be an object in `Resource/Api/X`. Example 
 `Resource/Api/Stats/TotalResponse`.
 
-### Deserialzier
+### ResponseHydrator
 
-The end user chooses what deserialzier to use. By default one should return domain objects. 
+The end user chooses what hydrator to use. By default, one should return domain objects. 
 
 ### Request builder
 

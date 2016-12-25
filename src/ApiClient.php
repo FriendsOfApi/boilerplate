@@ -26,7 +26,7 @@ class ApiClient
     /**
      * @var ResponseHydrator
      */
-    private $deserializer;
+    private $hydrator;
 
     /**
      * @var RequestBuilder
@@ -35,13 +35,13 @@ class ApiClient
 
     /**
      * @param string                      $apiKey
-     * @param ResponseHydrator|null       $deserializer
+     * @param ResponseHydrator|null       $hydrator
      * @param HttpClientConfigurator|null $clientConfigurator
      * @param RequestBuilder|null         $requestBuilder
      */
     public function __construct(
         $apiKey = null,
-        ResponseHydrator $deserializer = null,
+        ResponseHydrator $hydrator = null,
         HttpClientConfigurator $clientConfigurator = null,
         RequestBuilder $requestBuilder = null
     ) {
@@ -51,7 +51,7 @@ class ApiClient
         }
         $this->httpClient = $clientConfigurator->createConfiguredClient();
         $this->requestBuilder = $requestBuilder ?: new RequestBuilder();
-        $this->deserializer = $deserializer ?: new ModelHydrator();
+        $this->hydrator = $hydrator ?: new ModelHydrator();
     }
 
     /**
@@ -59,7 +59,7 @@ class ApiClient
      */
     public function tweets(): Tweet
     {
-        return new Api\Tweet($this->httpClient, $this->requestBuilder, $this->deserializer);
+        return new Api\Tweet($this->httpClient, $this->requestBuilder, $this->hydrator);
     }
 
     /**
@@ -67,6 +67,6 @@ class ApiClient
      */
     public function stats(): Stats
     {
-        return new Api\Stats($this->httpClient, $this->requestBuilder, $this->deserializer);
+        return new Api\Stats($this->httpClient, $this->requestBuilder, $this->hydrator);
     }
 }

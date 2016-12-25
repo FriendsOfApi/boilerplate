@@ -32,7 +32,7 @@ class Stats extends HttpApi
 
         // TODO handle non 200 responses
 
-        return $this->deserializer->deserialize($response, ShowResponse::class);
+        return $this->hydrator->hydrate($response, ShowResponse::class);
     }
 
     /**
@@ -46,6 +46,6 @@ class Stats extends HttpApi
 
         // TODO handle non 200 responses
 
-        return $this->deserializer->deserialize($response, TotalResponse::class);
+        return $this->hydrator->hydrate($response, TotalResponse::class);
     }
 }

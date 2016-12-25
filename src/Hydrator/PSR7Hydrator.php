@@ -22,7 +22,7 @@ class PSR7Hydrator implements ResponseHydrator
      *
      * @return ResponseInterface
      */
-    public function deserialize(ResponseInterface $response, string $class): ResponseInterface
+    public function hydrate(ResponseInterface $response, string $class): ResponseInterface
     {
         return $response;
     }

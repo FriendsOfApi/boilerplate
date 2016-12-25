@@ -10,7 +10,7 @@ namespace FAPI\Boilerplate\Hydrator;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Deserialize a PSR-7 response to something else.
+ * Hydrate a PSR-7 response to something else.
  */
 interface ResponseHydrator
 {
@@ -20,5 +20,5 @@ interface ResponseHydrator
      *
      * @return mixed
      */
-    public function deserialize(ResponseInterface $response, string $class);
+    public function hydrate(ResponseInterface $response, string $class);
 }

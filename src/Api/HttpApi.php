@@ -27,7 +27,7 @@ abstract class HttpApi
     /**
      * @var ResponseHydrator
      */
-    protected $serializer;
+    protected $hydrator;
 
     /**
      * @var RequestBuilder
@@ -37,13 +37,13 @@ abstract class HttpApi
     /**
      * @param HttpClient       $httpClient
      * @param RequestBuilder   $requestBuilder
-     * @param ResponseHydrator $deserializer
+     * @param ResponseHydrator $hydrator
      */
-    public function __construct(HttpClient $httpClient, RequestBuilder $requestBuilder, ResponseHydrator $deserializer)
+    public function __construct(HttpClient $httpClient, RequestBuilder $requestBuilder, ResponseHydrator $hydrator)
     {
         $this->httpClient = $httpClient;
         $this->requestBuilder = $requestBuilder;
-        $this->deserializer = $deserializer;
+        $this->hydrator = $hydrator;
     }
 
     /**

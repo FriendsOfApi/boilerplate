@@ -30,7 +30,7 @@ class Tweet extends HttpApi
 
         // TODO handle non 200 responses
 
-        return $this->deserializer->deserialize($response, IndexResponse::class);
+        return $this->hydrator->hydrate($response, IndexResponse::class);
     }
 
     /**
@@ -48,7 +48,7 @@ class Tweet extends HttpApi
 
         // TODO handle non 200 responses
 
-        return $this->deserializer->deserialize($response, ShowResponse::class);
+        return $this->hydrator->hydrate($response, ShowResponse::class);
     }
 
     /**
@@ -78,7 +78,7 @@ class Tweet extends HttpApi
 
         // TODO handle non 200 responses
 
-        return $this->deserializer->deserialize($response, CreateResponse::class);
+        return $this->hydrator->hydrate($response, CreateResponse::class);
     }
 
     /**
@@ -109,7 +109,7 @@ class Tweet extends HttpApi
 
         // TODO handle non 200 responses
 
-        return $this->deserializer->deserialize($response, UpdateResponse::class);
+        return $this->hydrator->hydrate($response, UpdateResponse::class);
     }
 
     /**
@@ -127,6 +127,6 @@ class Tweet extends HttpApi
 
         // TODO handle non 200 responses
 
-        return $this->deserializer->deserialize($response, DeleteResponse::class);
+        return $this->hydrator->hydrate($response, DeleteResponse::class);
     }
 }
