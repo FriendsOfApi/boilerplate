@@ -59,40 +59,23 @@ final class RequestBuilder
     public function create($method, $uri, array $headers = [], $body = null): RequestInterface
     {
         if (!is_array($body)) {
-            return $this->getRequestFactory()->createRequest($method, $uri, $headers, $body);
+            return $this->requestFactory->createRequest($method, $uri, $headers, $body);
         }
 
-        $builder = $this->getMultipartStreamBuilder();
         foreach ($body as $item) {
             $name = $item['name'];
             $content = $item['content'];
             unset($item['name']);
             unset($item['content']);
 
-            $builder->addResource($name, $content, $item);
+            $this->multipartStreamBuilder->addResource($name, $content, $item);
         }
 
-        $multipartStream = $builder->build();
-        $boundary = $builder->getBoundary();
+        $multipartStream = $this->multipartStreamBuilder->build();
+        $boundary = $this->multipartStreamBuilder->getBoundary();
 
         $headers['Content-Type'] = 'multipart/form-data; boundary='.$boundary;
 
-        return $this->getRequestFactory()->createRequest($method, $uri, $headers, $multipartStream);
-    }
-
-    /**
-     * @return RequestFactory
-     */
-    private function getRequestFactory(): RequestFactory
-    {
-        return $this->requestFactory;
-    }
-
-    /**
-     * @return MultipartStreamBuilder
-     */
-    private function getMultipartStreamBuilder(): MultipartStreamBuilder
-    {
-        return $this->multipartStreamBuilder;
+        return $this->requestFactory->createRequest($method, $uri, $headers, $multipartStream);
     }
 }
