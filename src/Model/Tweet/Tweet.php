@@ -5,14 +5,14 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate\Resource\Api\Tweet;
-
-use FAPI\Boilerplate\Resource\ApiResponse;
+namespace FAPI\Boilerplate\Model\Tweet;
 
 /**
+ * A representation of a Tweet. It can be shared between multiple responses.
+ *
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class ShowResponse implements ApiResponse
+class Tweet
 {
     private $message;
 

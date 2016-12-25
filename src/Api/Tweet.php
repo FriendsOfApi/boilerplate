@@ -8,11 +8,11 @@
 namespace FAPI\Boilerplate\Api;
 
 use FAPI\Boilerplate\Exception\InvalidArgumentException;
-use FAPI\Boilerplate\Resource\Api\Tweet\CreateResponse;
-use FAPI\Boilerplate\Resource\Api\Tweet\DeleteResponse;
-use FAPI\Boilerplate\Resource\Api\Tweet\IndexResponse;
-use FAPI\Boilerplate\Resource\Api\Tweet\ShowResponse;
-use FAPI\Boilerplate\Resource\Api\Tweet\UpdateResponse;
+use FAPI\Boilerplate\Model\Tweet\CreateResponse;
+use FAPI\Boilerplate\Model\Tweet\DeleteResponse;
+use FAPI\Boilerplate\Model\Tweet\IndexResponse;
+use FAPI\Boilerplate\Model\Tweet\ShowResponse;
+use FAPI\Boilerplate\Model\Tweet\UpdateResponse;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
