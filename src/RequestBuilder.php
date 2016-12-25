@@ -75,6 +75,7 @@ final class RequestBuilder
         $boundary = $this->multipartStreamBuilder->getBoundary();
 
         $headers['Content-Type'] = 'multipart/form-data; boundary='.$boundary;
+        $this->multipartStreamBuilder->reset();
 
         return $this->requestFactory->createRequest($method, $uri, $headers, $multipartStream);
     }
