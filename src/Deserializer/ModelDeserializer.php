@@ -8,7 +8,7 @@
 namespace FAPI\Boilerplate\Deserializer;
 
 use FAPI\Boilerplate\Exception\DeserializeException;
-use FAPI\Boilerplate\ApiResponse;
+use FAPI\Boilerplate\Model\ApiResponse;
 use Psr\Http\Message\ResponseInterface;
 
 /**

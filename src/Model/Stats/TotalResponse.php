@@ -7,7 +7,7 @@
 
 namespace FAPI\Boilerplate\Model\Stats;
 
-use FAPI\Boilerplate\\ApiResponse;
+use FAPI\Boilerplate\Model\ApiResponse;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
