@@ -28,8 +28,7 @@ final class RequestBuilder
     private $multipartStreamBuilder;
 
     /**
-     *
-     * @param RequestFactory $requestFactory
+     * @param RequestFactory         $requestFactory
      * @param MultipartStreamBuilder $multipartStreamBuilder
      */
     public function __construct(
