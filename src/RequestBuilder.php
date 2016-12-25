@@ -28,6 +28,19 @@ final class RequestBuilder
     private $multipartStreamBuilder;
 
     /**
+     *
+     * @param RequestFactory $requestFactory
+     * @param MultipartStreamBuilder $multipartStreamBuilder
+     */
+    public function __construct(
+        RequestFactory $requestFactory = null,
+        MultipartStreamBuilder $multipartStreamBuilder = null
+    ) {
+        $this->requestFactory = $requestFactory ?: MessageFactoryDiscovery::find();
+        $this->multipartStreamBuilder = $multipartStreamBuilder ?: new MultipartStreamBuilder();
+    }
+
+    /**
      * Creates a new PSR-7 request.
      *
      * @param string            $method
@@ -73,23 +86,7 @@ final class RequestBuilder
      */
     private function getRequestFactory(): RequestFactory
     {
-        if ($this->requestFactory === null) {
-            $this->requestFactory = MessageFactoryDiscovery::find();
-        }
-
         return $this->requestFactory;
-    }
-
-    /**
-     * @param RequestFactory $requestFactory
-     *
-     * @return RequestBuilder
-     */
-    public function setRequestFactory(RequestFactory $requestFactory)
-    {
-        $this->requestFactory = $requestFactory;
-
-        return $this;
     }
 
     /**
@@ -97,22 +94,6 @@ final class RequestBuilder
      */
     private function getMultipartStreamBuilder(): MultipartStreamBuilder
     {
-        if ($this->multipartStreamBuilder === null) {
-            $this->multipartStreamBuilder = new MultipartStreamBuilder();
-        }
-
         return $this->multipartStreamBuilder;
-    }
-
-    /**
-     * @param MultipartStreamBuilder $multipartStreamBuilder
-     *
-     * @return RequestBuilder
-     */
-    public function setMultipartStreamBuilder(MultipartStreamBuilder $multipartStreamBuilder)
-    {
-        $this->multipartStreamBuilder = $multipartStreamBuilder;
-
-        return $this;
     }
 }
