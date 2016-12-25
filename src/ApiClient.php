@@ -11,7 +11,7 @@ use FAPI\Boilerplate\Api\Stats;
 use FAPI\Boilerplate\Api\Tweet;
 use Http\Client\Common\HttpMethodsClient;
 use FAPI\Boilerplate\Hydrator\ModelHydrator;
-use FAPI\Boilerplate\Hydrator\ResponseHydrator;
+use FAPI\Boilerplate\Hydrator\Hydrator;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
@@ -24,7 +24,7 @@ class ApiClient
     private $httpClient;
 
     /**
-     * @var ResponseHydrator
+     * @var Hydrator
      */
     private $hydrator;
 
@@ -35,13 +35,13 @@ class ApiClient
 
     /**
      * @param string                      $apiKey
-     * @param ResponseHydrator|null       $hydrator
+     * @param Hydrator|null       $hydrator
      * @param HttpClientConfigurator|null $clientConfigurator
      * @param RequestBuilder|null         $requestBuilder
      */
     public function __construct(
         $apiKey = null,
-        ResponseHydrator $hydrator = null,
+        Hydrator $hydrator = null,
         HttpClientConfigurator $clientConfigurator = null,
         RequestBuilder $requestBuilder = null
     ) {

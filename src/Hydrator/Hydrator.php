@@ -12,7 +12,7 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * Hydrate a PSR-7 response to something else.
  */
-interface ResponseHydrator
+interface Hydrator
 {
     /**
      * @param ResponseInterface $response

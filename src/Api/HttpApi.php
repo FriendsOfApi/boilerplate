@@ -8,7 +8,7 @@
 namespace FAPI\Boilerplate\Api;
 
 use Http\Client\HttpClient;
-use FAPI\Boilerplate\Hydrator\ResponseHydrator;
+use FAPI\Boilerplate\Hydrator\Hydrator;
 use FAPI\Boilerplate\RequestBuilder;
 use Psr\Http\Message\ResponseInterface;
 
@@ -25,7 +25,7 @@ abstract class HttpApi
     private $httpClient;
 
     /**
-     * @var ResponseHydrator
+     * @var Hydrator
      */
     protected $hydrator;
 
@@ -37,9 +37,9 @@ abstract class HttpApi
     /**
      * @param HttpClient       $httpClient
      * @param RequestBuilder   $requestBuilder
-     * @param ResponseHydrator $hydrator
+     * @param Hydrator $hydrator
      */
-    public function __construct(HttpClient $httpClient, RequestBuilder $requestBuilder, ResponseHydrator $hydrator)
+    public function __construct(HttpClient $httpClient, RequestBuilder $requestBuilder, Hydrator $hydrator)
     {
         $this->httpClient = $httpClient;
         $this->requestBuilder = $requestBuilder;
