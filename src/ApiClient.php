@@ -35,7 +35,7 @@ class ApiClient
 
     /**
      * @param string                      $apiKey
-     * @param ResponseHydrator|null   $deserializer
+     * @param ResponseHydrator|null       $deserializer
      * @param HttpClientConfigurator|null $clientConfigurator
      * @param RequestBuilder|null         $requestBuilder
      */
