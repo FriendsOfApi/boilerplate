@@ -5,16 +5,16 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate\Deserializer;
+namespace FAPI\Boilerplate\Hydrator;
 
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Do not serialize at all. Just return a PSR-7 response.
+ * Do not hydrate to any object at all. Just return a PSR-7 response.
  *
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class PSR7Deserializer implements ResponseDeserializer
+class PSR7Hydrator implements ResponseHydrator
 {
     /**
      * @param ResponseInterface $response

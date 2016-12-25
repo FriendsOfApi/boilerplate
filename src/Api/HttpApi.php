@@ -8,7 +8,7 @@
 namespace FAPI\Boilerplate\Api;
 
 use Http\Client\HttpClient;
-use FAPI\Boilerplate\Deserializer\ResponseDeserializer;
+use FAPI\Boilerplate\Hydrator\ResponseHydrator;
 use FAPI\Boilerplate\RequestBuilder;
 use Psr\Http\Message\ResponseInterface;
 
@@ -25,7 +25,7 @@ abstract class HttpApi
     private $httpClient;
 
     /**
-     * @var ResponseDeserializer
+     * @var ResponseHydrator
      */
     protected $serializer;
 
@@ -37,9 +37,9 @@ abstract class HttpApi
     /**
      * @param HttpClient           $httpClient
      * @param RequestBuilder       $requestBuilder
-     * @param ResponseDeserializer $deserializer
+     * @param ResponseHydrator $deserializer
      */
-    public function __construct(HttpClient $httpClient, RequestBuilder $requestBuilder, ResponseDeserializer $deserializer)
+    public function __construct(HttpClient $httpClient, RequestBuilder $requestBuilder, ResponseHydrator $deserializer)
     {
         $this->httpClient = $httpClient;
         $this->requestBuilder = $requestBuilder;

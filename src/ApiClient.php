@@ -10,8 +10,8 @@ namespace FAPI\Boilerplate;
 use FAPI\Boilerplate\Api\Stats;
 use FAPI\Boilerplate\Api\Tweet;
 use Http\Client\Common\HttpMethodsClient;
-use FAPI\Boilerplate\Deserializer\ModelDeserializer;
-use FAPI\Boilerplate\Deserializer\ResponseDeserializer;
+use FAPI\Boilerplate\Hydrator\ModelHydrator;
+use FAPI\Boilerplate\Hydrator\ResponseHydrator;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
@@ -24,7 +24,7 @@ class ApiClient
     private $httpClient;
 
     /**
-     * @var ResponseDeserializer
+     * @var ResponseHydrator
      */
     private $deserializer;
 
@@ -35,13 +35,13 @@ class ApiClient
 
     /**
      * @param string                      $apiKey
-     * @param ResponseDeserializer|null   $deserializer
+     * @param ResponseHydrator|null   $deserializer
      * @param HttpClientConfigurator|null $clientConfigurator
      * @param RequestBuilder|null         $requestBuilder
      */
     public function __construct(
         $apiKey = null,
-        ResponseDeserializer $deserializer = null,
+        ResponseHydrator $deserializer = null,
         HttpClientConfigurator $clientConfigurator = null,
         RequestBuilder $requestBuilder = null
     ) {
@@ -51,7 +51,7 @@ class ApiClient
         }
         $this->httpClient = $clientConfigurator->createConfiguredClient();
         $this->requestBuilder = $requestBuilder ?: new RequestBuilder();
-        $this->deserializer = $deserializer ?: new ModelDeserializer();
+        $this->deserializer = $deserializer ?: new ModelHydrator();
     }
 
     /**

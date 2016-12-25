@@ -5,14 +5,14 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate\Deserializer;
+namespace FAPI\Boilerplate\Hydrator;
 
 use Psr\Http\Message\ResponseInterface;
 
 /**
  * Deserialize a PSR-7 response to something else.
  */
-interface ResponseDeserializer
+interface ResponseHydrator
 {
     /**
      * @param ResponseInterface $response
