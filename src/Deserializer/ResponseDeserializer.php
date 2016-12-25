@@ -5,7 +5,7 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace Fapi\Boilerplate\Deserializer;
+namespace FAPI\Boilerplate\Deserializer;
 
 use Psr\Http\Message\ResponseInterface;
 

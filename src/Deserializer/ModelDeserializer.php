@@ -5,10 +5,10 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace Fapi\Boilerplate\Deserializer;
+namespace FAPI\Boilerplate\Deserializer;
 
-use Fapi\Boilerplate\Exception\DeserializeException;
-use Fapi\Boilerplate\Resource\ApiResponse;
+use FAPI\Boilerplate\Exception\DeserializeException;
+use FAPI\Boilerplate\Resource\ApiResponse;
 use Psr\Http\Message\ResponseInterface;
 
 /**

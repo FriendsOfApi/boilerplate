@@ -5,11 +5,11 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace Fapi\Boilerplate\Api;
+namespace FAPI\Boilerplate\Api;
 
 use Http\Client\HttpClient;
-use Fapi\Boilerplate\Deserializer\ResponseDeserializer;
-use Fapi\Boilerplate\RequestBuilder;
+use FAPI\Boilerplate\Deserializer\ResponseDeserializer;
+use FAPI\Boilerplate\RequestBuilder;
 use Psr\Http\Message\ResponseInterface;
 
 /**

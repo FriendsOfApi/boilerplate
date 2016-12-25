@@ -5,7 +5,7 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace Fapi\Boilerplate\Resource\Api\Tweet;
+namespace FAPI\Boilerplate\Resource\Api\Tweet;
 
 /**
  * A representation of a Tweet. It can be shared between multiple responses.

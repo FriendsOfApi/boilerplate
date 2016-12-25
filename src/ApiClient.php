@@ -5,13 +5,13 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace Fapi\Boilerplate;
+namespace FAPI\Boilerplate;
 
-use Fapi\Boilerplate\Api\Stats;
-use Fapi\Boilerplate\Api\Tweet;
+use FAPI\Boilerplate\Api\Stats;
+use FAPI\Boilerplate\Api\Tweet;
 use Http\Client\Common\HttpMethodsClient;
-use Fapi\Boilerplate\Deserializer\ModelDeserializer;
-use Fapi\Boilerplate\Deserializer\ResponseDeserializer;
+use FAPI\Boilerplate\Deserializer\ModelDeserializer;
+use FAPI\Boilerplate\Deserializer\ResponseDeserializer;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>

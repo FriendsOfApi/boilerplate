@@ -5,7 +5,7 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace Fapi\Boilerplate;
+namespace FAPI\Boilerplate;
 
 use Http\Client\HttpClient;
 use Http\Client\Common\PluginClient;

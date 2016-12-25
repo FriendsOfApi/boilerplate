@@ -5,14 +5,14 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace Fapi\Boilerplate\Api;
+namespace FAPI\Boilerplate\Api;
 
-use Fapi\Boilerplate\Exception\InvalidArgumentException;
-use Fapi\Boilerplate\Resource\Api\Tweet\CreateResponse;
-use Fapi\Boilerplate\Resource\Api\Tweet\DeleteResponse;
-use Fapi\Boilerplate\Resource\Api\Tweet\IndexResponse;
-use Fapi\Boilerplate\Resource\Api\Tweet\ShowResponse;
-use Fapi\Boilerplate\Resource\Api\Tweet\UpdateResponse;
+use FAPI\Boilerplate\Exception\InvalidArgumentException;
+use FAPI\Boilerplate\Resource\Api\Tweet\CreateResponse;
+use FAPI\Boilerplate\Resource\Api\Tweet\DeleteResponse;
+use FAPI\Boilerplate\Resource\Api\Tweet\IndexResponse;
+use FAPI\Boilerplate\Resource\Api\Tweet\ShowResponse;
+use FAPI\Boilerplate\Resource\Api\Tweet\UpdateResponse;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>

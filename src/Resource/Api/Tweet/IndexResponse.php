@@ -5,9 +5,9 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace Fapi\Boilerplate\Resource\Api\Tweet;
+namespace FAPI\Boilerplate\Resource\Api\Tweet;
 
-use Fapi\Boilerplate\Resource\ApiResponse;
+use FAPI\Boilerplate\Resource\ApiResponse;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>

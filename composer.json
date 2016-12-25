@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Fapi\\Boilerplate\\": "src/"
+            "FAPI\\Boilerplate\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Fapi\\Boilerplate\\Tests\\": "tests/"
+            "FAPI\\Boilerplate\\Tests\\": "tests/"
         }
     },
     "scripts": {
