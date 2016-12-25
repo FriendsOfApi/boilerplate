@@ -5,7 +5,7 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace APIPHP\Boilerplate\Resource;
+namespace Fapi\Boilerplate\Resource;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>

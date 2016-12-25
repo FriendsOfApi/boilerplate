@@ -5,7 +5,7 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace APIPHP\Boilerplate\Deserializer;
+namespace Fapi\Boilerplate\Deserializer;
 
 use Psr\Http\Message\ResponseInterface;
 

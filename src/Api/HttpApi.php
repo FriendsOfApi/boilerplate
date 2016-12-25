@@ -5,11 +5,11 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace APIPHP\Boilerplate\Api;
+namespace Fapi\Boilerplate\Api;
 
 use Http\Client\HttpClient;
-use APIPHP\Boilerplate\Deserializer\ResponseDeserializer;
-use APIPHP\Boilerplate\RequestBuilder;
+use Fapi\Boilerplate\Deserializer\ResponseDeserializer;
+use Fapi\Boilerplate\RequestBuilder;
 use Psr\Http\Message\ResponseInterface;
 
 /**
