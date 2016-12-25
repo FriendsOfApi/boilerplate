@@ -5,7 +5,7 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace APIPHP\Boilerplate;
+namespace FAPI\Boilerplate;
 
 /**
  * All our exception implements this interface.

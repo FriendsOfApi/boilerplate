@@ -5,9 +5,9 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace APIPHP\Boilerplate\Exception;
+namespace FAPI\Boilerplate\Exception;
 
-use APIPHP\Boilerplate\Exception;
+use FAPI\Boilerplate\Exception;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>

@@ -5,14 +5,14 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace APIPHP\Boilerplate\Api;
+namespace FAPI\Boilerplate\Api;
 
-use APIPHP\Boilerplate\Exception\InvalidArgumentException;
-use APIPHP\Boilerplate\Resource\Api\Tweet\CreateResponse;
-use APIPHP\Boilerplate\Resource\Api\Tweet\DeleteResponse;
-use APIPHP\Boilerplate\Resource\Api\Tweet\IndexResponse;
-use APIPHP\Boilerplate\Resource\Api\Tweet\ShowResponse;
-use APIPHP\Boilerplate\Resource\Api\Tweet\UpdateResponse;
+use FAPI\Boilerplate\Exception\InvalidArgumentException;
+use FAPI\Boilerplate\Resource\Api\Tweet\CreateResponse;
+use FAPI\Boilerplate\Resource\Api\Tweet\DeleteResponse;
+use FAPI\Boilerplate\Resource\Api\Tweet\IndexResponse;
+use FAPI\Boilerplate\Resource\Api\Tweet\ShowResponse;
+use FAPI\Boilerplate\Resource\Api\Tweet\UpdateResponse;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>

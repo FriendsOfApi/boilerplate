@@ -5,10 +5,10 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace APIPHP\Boilerplate\Api;
+namespace FAPI\Boilerplate\Api;
 
-use APIPHP\Boilerplate\Exception\InvalidArgumentException;
-use APIPHP\Boilerplate\Resource\Api\Stats\TotalResponse;
+use FAPI\Boilerplate\Exception\InvalidArgumentException;
+use FAPI\Boilerplate\Resource\Api\Stats\TotalResponse;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
