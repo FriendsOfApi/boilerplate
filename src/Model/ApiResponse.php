@@ -5,7 +5,7 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate\Resource;
+namespace FAPI\Boilerplate\Model;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>

@@ -5,14 +5,14 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate\Resource\Api\Tweet;
+namespace FAPI\Boilerplate\Model\Tweet;
 
-use FAPI\Boilerplate\Resource\ApiResponse;
+use FAPI\Boilerplate\Model\ApiResponse;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class UpdateResponse implements ApiResponse
+class DeleteResponse implements ApiResponse
 {
     private $message;
 

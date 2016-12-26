@@ -5,14 +5,14 @@
  * of the MIT license.  See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate\Resource\Api\Stats;
+namespace FAPI\Boilerplate\Model\Stats;
 
-use FAPI\Boilerplate\Resource\ApiResponse;
+use FAPI\Boilerplate\Model\ApiResponse;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-final class ShowResponse implements ApiResponse
+final class TotalResponse implements ApiResponse
 {
     /**
      * @var \DateTime

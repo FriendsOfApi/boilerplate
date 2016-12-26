@@ -8,7 +8,8 @@
 namespace FAPI\Boilerplate\Api;
 
 use FAPI\Boilerplate\Exception\InvalidArgumentException;
-use FAPI\Boilerplate\Resource\Api\Stats\TotalResponse;
+use FAPI\Boilerplate\Model\Stats\ShowResponse;
+use FAPI\Boilerplate\Model\Stats\TotalResponse;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
