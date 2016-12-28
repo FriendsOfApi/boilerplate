@@ -7,12 +7,12 @@
 
 namespace FAPI\Boilerplate\Model\Stats;
 
-use FAPI\Boilerplate\Model\ApiResponse;
+use FAPI\Boilerplate\Model\CreatableFromArray;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-final class TotalResponse implements ApiResponse
+final class TotalResponse implements CreatableFromArray
 {
     /**
      * @var \DateTime
@@ -44,9 +44,9 @@ final class TotalResponse implements ApiResponse
     /**
      * @param array $data
      *
-     * @return self
+     * @return TotalResponse
      */
-    public static function create(array $data)
+    public static function createFromArray(array $data)
     {
         return new self(new \DateTime($data['start']), new \DateTime($data['end']), $data['count']);
     }

@@ -8,7 +8,7 @@
 namespace FAPI\Boilerplate\Hydrator;
 
 use FAPI\Boilerplate\Exception\HydrationException;
-use FAPI\Boilerplate\Model\ApiResponse;
+use FAPI\Boilerplate\Model\CreatableFromArray;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -36,8 +36,8 @@ class ModelHydrator implements Hydrator
             throw new HydrationException(sprintf('Error (%d) when trying to json_decode response', json_last_error()));
         }
 
-        if (is_subclass_of($class, ApiResponse::class)) {
-            $object = call_user_func($class.'::create', $data);
+        if (is_subclass_of($class, CreatableFromArray::class)) {
+            $object = call_user_func($class.'::createFromArray', $data);
         } else {
             $object = new $class($data);
         }
