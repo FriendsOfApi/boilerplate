@@ -7,12 +7,12 @@
 
 namespace FAPI\Boilerplate\Model\Tweet;
 
-use FAPI\Boilerplate\Model\ApiResponse;
+use FAPI\Boilerplate\Model\CreatableFromArray;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class DeleteResponse implements ApiResponse
+class DeleteResponse implements CreatableFromArray
 {
     private $message;
 

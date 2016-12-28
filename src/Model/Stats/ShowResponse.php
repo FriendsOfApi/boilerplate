@@ -7,12 +7,12 @@
 
 namespace FAPI\Boilerplate\Model\Stats;
 
-use FAPI\Boilerplate\Model\ApiResponse;
+use FAPI\Boilerplate\Model\CreatableFromArray;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-final class ShowResponse implements ApiResponse
+final class ShowResponse implements CreatableFromArray
 {
     /**
      * @var \DateTime

@@ -10,7 +10,7 @@ namespace FAPI\Boilerplate\Model;
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-interface ApiResponse
+interface CreatableFromArray
 {
     /**
      * Create an API response object from the HTTP response from the API server.
