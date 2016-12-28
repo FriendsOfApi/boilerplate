@@ -7,6 +7,8 @@
 
 namespace FAPI\Boilerplate\Api;
 
+use APIPHP\Boilerplate\Exception\Domain as DomainExceptions;
+use APIPHP\Boilerplate\Exception\DomainException;
 use Http\Client\HttpClient;
 use FAPI\Boilerplate\Hydrator\Hydrator;
 use FAPI\Boilerplate\RequestBuilder;
@@ -136,5 +138,27 @@ abstract class HttpApi
     private function createJsonBody(array $parameters)
     {
         return (count($parameters) === 0) ? null : json_encode($parameters, empty($parameters) ? JSON_FORCE_OBJECT : 0);
+    }
+
+    /**
+     * Handle HTTP errors.
+     *
+     * Call is controlled by the specific API methods.
+     *
+     * @param ResponseInterface $response
+     *
+     * @throws DomainException
+     */
+    protected function handleErrors(ResponseInterface $response)
+    {
+        switch ($response->getStatusCode()) {
+            case 404:
+                throw new DomainExceptions\NotFoundException();
+                break;
+
+            default:
+                throw new DomainExceptions\UnknownErrorException();
+                break;
+        }
     }
 }
