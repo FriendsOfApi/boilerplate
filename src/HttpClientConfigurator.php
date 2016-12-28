@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This software may be modified and distributed under the terms
- * of the MIT license.  See the LICENSE file for details.
+ * of the MIT license. See the LICENSE file for details.
  */
 
 namespace FAPI\Boilerplate;
@@ -11,13 +13,16 @@ use Http\Client\HttpClient;
 use Http\Client\Common\PluginClient;
 use Http\Discovery\HttpClientDiscovery;
 use Http\Discovery\UriFactoryDiscovery;
+use Http\Message\Authentication;
 use Http\Message\UriFactory;
 use Http\Client\Common\Plugin;
 
 /**
- * Configure a HTTP client.
+ * Configure an HTTP client.
  *
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
+ *
+ * @internal This class should not be used outside of the API Client, it is not part of the BC promise.
  */
 final class HttpClientConfigurator
 {
@@ -42,27 +47,32 @@ final class HttpClientConfigurator
     private $httpClient;
 
     /**
-     * @return PluginClient
+     * @param HttpClient|null $httpClient
+     * @param UriFactory|null $uriFactory
      */
-    public function createConfiguredClient()
+    public function __construct(HttpClient $httpClient = null, UriFactory $uriFactory = null)
     {
-        $plugins = [
-            new Plugin\AddHostPlugin($this->getUriFactory()->createUri($this->getEndpoint())),
-            new Plugin\HeaderDefaultsPlugin([
-                'User-Agent' => 'api-php/boilerplate (https://github.com/api-php/boilerplate)',
-                'Authorization' => 'Basic '.base64_encode(sprintf('api:%s', $this->getApiKey())),
-            ]),
-        ];
-
-        return new PluginClient($this->getHttpClient(), $plugins);
+        $this->httpClient = $httpClient ?? HttpClientDiscovery::find();
+        $this->uriFactory = $uriFactory ?? UriFactoryDiscovery::find();
     }
 
     /**
-     * @return string
+     * @return HttpClient
      */
-    private function getEndpoint(): string
+    public function createConfiguredClient(): HttpClient
     {
-        return $this->endpoint;
+        $plugins = [
+            new Plugin\AddHostPlugin($this->uriFactory->createUri($this->endpoint)),
+            new Plugin\HeaderDefaultsPlugin([
+                'User-Agent' => 'api-php/boilerplate (https://github.com/api-php/boilerplate)',
+            ]),
+        ];
+
+        if (null !== $this->apiKey) {
+            $plugins[] = new Plugin\AuthenticationPlugin(new Authentication\Bearer($this->apiKey));
+        }
+
+        return new PluginClient($this->httpClient, $plugins);
     }
 
     /**
@@ -78,14 +88,6 @@ final class HttpClientConfigurator
     }
 
     /**
-     * @return string
-     */
-    private function getApiKey(): string
-    {
-        return $this->apiKey;
-    }
-
-    /**
      * @param string $apiKey
      *
      * @return HttpClientConfigurator
@@ -93,54 +95,6 @@ final class HttpClientConfigurator
     public function setApiKey(string $apiKey)
     {
         $this->apiKey = $apiKey;
-
-        return $this;
-    }
-
-    /**
-     * @return UriFactory
-     */
-    private function getUriFactory(): UriFactory
-    {
-        if ($this->uriFactory === null) {
-            $this->uriFactory = UriFactoryDiscovery::find();
-        }
-
-        return $this->uriFactory;
-    }
-
-    /**
-     * @param UriFactory $uriFactory
-     *
-     * @return HttpClientConfigurator
-     */
-    public function setUriFactory(UriFactory $uriFactory)
-    {
-        $this->uriFactory = $uriFactory;
-
-        return $this;
-    }
-
-    /**
-     * @return HttpClient
-     */
-    private function getHttpClient(): HttpClient
-    {
-        if ($this->httpClient === null) {
-            $this->httpClient = HttpClientDiscovery::find();
-        }
-
-        return $this->httpClient;
-    }
-
-    /**
-     * @param HttpClient $httpClient
-     *
-     * @return HttpClientConfigurator
-     */
-    public function setHttpClient(HttpClient $httpClient)
-    {
-        $this->httpClient = $httpClient;
 
         return $this;
     }

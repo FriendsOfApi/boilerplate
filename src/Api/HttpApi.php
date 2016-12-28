@@ -2,7 +2,7 @@
 
 /*
  * This software may be modified and distributed under the terms
- * of the MIT license.  See the LICENSE file for details.
+ * of the MIT license. See the LICENSE file for details.
  */
 
 namespace FAPI\Boilerplate\Api;
@@ -18,11 +18,9 @@ use Psr\Http\Message\ResponseInterface;
 abstract class HttpApi
 {
     /**
-     * The HTTP client.
-     *
      * @var HttpClient
      */
-    private $httpClient;
+    protected $httpClient;
 
     /**
      * @var Hydrator
@@ -32,18 +30,18 @@ abstract class HttpApi
     /**
      * @var RequestBuilder
      */
-    private $requestBuilder;
+    protected $requestBuilder;
 
     /**
      * @param HttpClient     $httpClient
      * @param RequestBuilder $requestBuilder
      * @param Hydrator       $hydrator
      */
-    public function __construct(HttpClient $httpClient, RequestBuilder $requestBuilder, Hydrator $hydrator)
+    public function __construct(HttpClient $httpClient, Hydrator $hydrator, RequestBuilder $requestBuilder)
     {
         $this->httpClient = $httpClient;
-        $this->requestBuilder = $requestBuilder;
         $this->hydrator = $hydrator;
+        $this->requestBuilder = $requestBuilder;
     }
 
     /**

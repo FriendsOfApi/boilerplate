@@ -2,7 +2,7 @@
 
 /*
  * This software may be modified and distributed under the terms
- * of the MIT license.  See the LICENSE file for details.
+ * of the MIT license. See the LICENSE file for details.
  */
 
 namespace FAPI\Boilerplate;
@@ -14,6 +14,8 @@ use Psr\Http\Message\RequestInterface;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
+ *
+ * @internal This class should not be used outside of the API Client, it is not part of the BC promise.
  */
 final class RequestBuilder
 {
