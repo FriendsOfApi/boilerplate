@@ -98,7 +98,6 @@ class Tweet extends HttpApi
 
         $response = $this->httpPost('/v1/tweets/new', $params);
 
-
         if (!$this->hydrator) {
             return $response;
         }
