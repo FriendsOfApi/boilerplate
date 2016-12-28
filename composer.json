@@ -1,5 +1,5 @@
 {
-    "name": "api-php/boilerplate",
+    "name": "friendsofapi/boilerplate",
     "description": "A good base for a API client",
     "license": "MIT",
     "keywords": ["api"],
