@@ -44,7 +44,7 @@ final class ShowResponse implements CreatableFromArray
     /**
      * @param array $data
      *
-     * @return self
+     * @return ShowResponse
      */
     public static function createFromArray(array $data)
     {

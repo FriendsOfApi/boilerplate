@@ -27,7 +27,7 @@ class DeleteResponse implements CreatableFromArray
     /**
      * @param array $data
      *
-     * @return CreateResponse
+     * @return DeleteResponse
      */
     public static function createFromArray(array $data)
     {

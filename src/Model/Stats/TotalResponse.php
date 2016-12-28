@@ -44,7 +44,7 @@ final class TotalResponse implements CreatableFromArray
     /**
      * @param array $data
      *
-     * @return self
+     * @return TotalResponse
      */
     public static function createFromArray(array $data)
     {

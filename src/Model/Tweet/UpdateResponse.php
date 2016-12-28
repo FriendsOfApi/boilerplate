@@ -27,7 +27,7 @@ class UpdateResponse implements CreatableFromArray
     /**
      * @param array $data
      *
-     * @return CreateResponse
+     * @return UpdateResponse
      */
     public static function createFromArray(array $data)
     {
