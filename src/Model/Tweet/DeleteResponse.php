@@ -29,7 +29,7 @@ class DeleteResponse implements CreatableFromArray
      *
      * @return CreateResponse
      */
-    public static function create(array $data)
+    public static function createFromArray(array $data)
     {
         $message = '';
 

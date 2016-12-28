@@ -40,7 +40,7 @@ class ShowResponse implements CreatableFromArray
         $this->createdAt = $createdAt;
     }
 
-    public static function create(array $data)
+    public static function createFromArray(array $data)
     {
         // TODO some validation on input
 

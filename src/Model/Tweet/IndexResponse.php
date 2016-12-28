@@ -33,7 +33,7 @@ class IndexResponse implements CreatableFromArray
      *
      * @return IndexResponse
      */
-    public static function create(array $data)
+    public static function createFromArray(array $data)
     {
         $message = '';
         $tweets = [];

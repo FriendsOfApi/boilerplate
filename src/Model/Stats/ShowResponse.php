@@ -46,7 +46,7 @@ final class ShowResponse implements CreatableFromArray
      *
      * @return self
      */
-    public static function create(array $data)
+    public static function createFromArray(array $data)
     {
         return new self(new \DateTime($data['start']), new \DateTime($data['end']), $data['count']);
     }
