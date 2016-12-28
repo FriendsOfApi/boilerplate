@@ -34,6 +34,9 @@ final class ApiClient
     private $requestBuilder;
 
     /**
+     * The constructor accepts already configured HTTP clients.
+     * Use the configure method to pass a configuration to the Client and create an HTTP Client.
+     *
      * @param HttpClient          $httpClient
      * @param Hydrator|null       $hydrator
      * @param RequestBuilder|null $requestBuilder
@@ -55,7 +58,7 @@ final class ApiClient
      *
      * @return ApiClient
      */
-    public function configure(
+    public static function configure(
         HttpClientConfigurator $httpClientConfigurator,
         Hydrator $hydrator = null,
         RequestBuilder $requestBuilder = null
@@ -63,6 +66,17 @@ final class ApiClient
         $httpClient = $httpClientConfigurator->createConfiguredClient();
 
         return new self($httpClient, $hydrator, $requestBuilder);
+    }
+
+    /**
+     * @param string $apiKey
+     *
+     * @return ApiClient
+     */
+    public static function create(string $apiKey): self {
+        $httpClientConfigurator = (new HttpClientConfigurator)->setApiKey($apiKey);
+
+        return self::configure($httpClientConfigurator);
     }
 
     /**
