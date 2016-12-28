@@ -32,6 +32,10 @@ class Tweet extends HttpApi
     {
         $response = $this->httpGet('/v1/tweets', $params);
 
+        if (!$this->hydrator) {
+            return $response;
+        }
+
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
             $this->handleErrors($response);
@@ -54,6 +58,10 @@ class Tweet extends HttpApi
         }
 
         $response = $this->httpGet(sprintf('/v1/tweets/%d', $id));
+
+        if (!$this->hydrator) {
+            return $response;
+        }
 
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
@@ -89,6 +97,10 @@ class Tweet extends HttpApi
         ];
 
         $response = $this->httpPost('/v1/tweets/new', $params);
+
+        if (!$this->hydrator) {
+            return $response;
+        }
 
         // Use any valid status code here
         if ($response->getStatusCode() !== 201) {
@@ -134,6 +146,10 @@ class Tweet extends HttpApi
 
         $response = $this->httpPut(sprintf('/v1/tweets/%d/edit', $id), $params);
 
+        if (!$this->hydrator) {
+            return $response;
+        }
+
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
             switch ($response->getStatusCode()) {
@@ -164,6 +180,10 @@ class Tweet extends HttpApi
         }
 
         $response = $this->httpDelete(sprintf('/v1/tweets/%d', $id));
+
+        if (!$this->hydrator) {
+            return $response;
+        }
 
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {

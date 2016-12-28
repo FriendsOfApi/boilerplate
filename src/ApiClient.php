@@ -11,6 +11,7 @@ use FAPI\Boilerplate\Api\Stats;
 use FAPI\Boilerplate\Api\Tweet;
 use FAPI\Boilerplate\Hydrator\ModelHydrator;
 use FAPI\Boilerplate\Hydrator\Hydrator;
+use Http\Client\HttpClient;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>

@@ -33,6 +33,10 @@ class Stats extends HttpApi
 
         $response = $this->httpGet(sprintf('/v1/stats/%s', rawurlencode($username)), $params);
 
+        if (!$this->hydrator) {
+            return $response;
+        }
+
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
             $this->handleErrors($response);
@@ -49,6 +53,10 @@ class Stats extends HttpApi
     public function total(array $params = [])
     {
         $response = $this->httpGet('/v1/stats/total', $params);
+
+        if (!$this->hydrator) {
+            return $response;
+        }
 
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
