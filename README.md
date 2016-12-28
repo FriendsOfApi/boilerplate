@@ -47,7 +47,7 @@ Example `Api/Stats`. The response of any call should be an object in `Resource/A
 
 ### Hydrator
 
-The end user chooses what hydrator to use. By default, one should return domain objects. 
+The end user chooses which hydrator to use. The default one should return domain objects.
 
 ### Request builder
 
