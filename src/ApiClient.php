@@ -9,7 +9,6 @@ namespace FAPI\Boilerplate;
 
 use FAPI\Boilerplate\Api\Stats;
 use FAPI\Boilerplate\Api\Tweet;
-use Http\Client\Common\HttpMethodsClient;
 use FAPI\Boilerplate\Hydrator\ModelHydrator;
 use FAPI\Boilerplate\Hydrator\Hydrator;
 
@@ -73,8 +72,9 @@ final class ApiClient
      *
      * @return ApiClient
      */
-    public static function create(string $apiKey): self {
-        $httpClientConfigurator = (new HttpClientConfigurator)->setApiKey($apiKey);
+    public static function create(string $apiKey): self
+    {
+        $httpClientConfigurator = (new HttpClientConfigurator())->setApiKey($apiKey);
 
         return self::configure($httpClientConfigurator);
     }
