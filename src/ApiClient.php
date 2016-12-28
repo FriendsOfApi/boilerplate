@@ -10,8 +10,8 @@ namespace FAPI\Boilerplate;
 use FAPI\Boilerplate\Api\Stats;
 use FAPI\Boilerplate\Api\Tweet;
 use Http\Client\Common\HttpMethodsClient;
-use FAPI\Boilerplate\Deserializer\ModelDeserializer;
-use FAPI\Boilerplate\Deserializer\ResponseDeserializer;
+use FAPI\Boilerplate\Hydrator\ModelHydrator;
+use FAPI\Boilerplate\Hydrator\Hydrator;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
@@ -24,9 +24,9 @@ class ApiClient
     private $httpClient;
 
     /**
-     * @var ResponseDeserializer
+     * @var Hydrator
      */
-    private $deserializer;
+    private $hydrator;
 
     /**
      * @var RequestBuilder
@@ -35,13 +35,13 @@ class ApiClient
 
     /**
      * @param string                      $apiKey
-     * @param ResponseDeserializer|null   $deserializer
+     * @param Hydrator|null               $hydrator
      * @param HttpClientConfigurator|null $clientConfigurator
      * @param RequestBuilder|null         $requestBuilder
      */
     public function __construct(
         $apiKey = null,
-        ResponseDeserializer $deserializer = null,
+        Hydrator $hydrator = null,
         HttpClientConfigurator $clientConfigurator = null,
         RequestBuilder $requestBuilder = null
     ) {
@@ -51,7 +51,7 @@ class ApiClient
         }
         $this->httpClient = $clientConfigurator->createConfiguredClient();
         $this->requestBuilder = $requestBuilder ?: new RequestBuilder();
-        $this->deserializer = $deserializer ?: new ModelDeserializer();
+        $this->hydrator = $hydrator ?: new ModelHydrator();
     }
 
     /**
@@ -59,7 +59,7 @@ class ApiClient
      */
     public function tweets(): Tweet
     {
-        return new Api\Tweet($this->httpClient, $this->requestBuilder, $this->deserializer);
+        return new Api\Tweet($this->httpClient, $this->requestBuilder, $this->hydrator);
     }
 
     /**
@@ -67,6 +67,6 @@ class ApiClient
      */
     public function stats(): Stats
     {
-        return new Api\Stats($this->httpClient, $this->requestBuilder, $this->deserializer);
+        return new Api\Stats($this->httpClient, $this->requestBuilder, $this->hydrator);
     }
 }

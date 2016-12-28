@@ -12,6 +12,6 @@ use FAPI\Boilerplate\Exception;
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class DeserializeException extends \RuntimeException implements Exception
+class HydrationException extends \RuntimeException implements Exception
 {
 }
