@@ -56,47 +56,63 @@ The request builder will build request with multipart streams when necessary.
 ### Domain objects as parameters
 
 If the API requires lots of parameters for a specific endpoint it could be tempting 
-to allow a domain object as parameter to that endpoint. 
+to create a domain object and pass it as an argument to that endpoint. 
 
 ```php
 public function create(string $username, Tweet $model) {
+  // send the Tweet to Fake Twitter API
+  // ...
 }
 
 $model = new Tweet();
-$model->setStuff('stuff');
+$model->setMessage('foobar');
+$model->addHashTag('stuff');
+$model->addHashTag('test');
+$model->setLocation('Stockhom/Sweden');
 // ...
 $api->create('foobar', $model);
 ```
 
-The approach above is not preferred since it overhead to create the Tweet object. 
-It could also conflict with the application developers' Tweet object. Instead of 
-forcing the users to use your Tweet object you should use an array in the endpoint 
-parameter. 
+This approach, however, is not preferred as the created Tweet object is an unnecessary 
+overhead. It could also conflict with the application developers' Tweet object. 
+Also, requests usually don't have the same parameters as responses, so using the 
+same object for both is impossible in most of the cases. Instead of forcing the 
+users to use your Tweet object you should use use an array for passing parameters 
+to the request. 
 
 ```php
 public function create(string $username, array $param) {
+  // send the Tweet to Fake Twitter API
+  // ...
 }
 
-$param['stuff' => 'stuff'];
+$param['message' => 'foobar'];
+$param['hashtags' => ['stuff', 'test']];
+$param['location' => 'Stockhom/Sweden'];
 // ...
 $api->create('foobar', $param);
 ```
 
-If you want to be helpful you could provide a `TweetBuilder` that will build the 
-`$param` array in a fluent manner. This is good when the `$param` array is complex. 
- 
+If your parameters are complex, you can provide a TweetBuilder. Since it's a builder, 
+fluent interface might be a good idea here. But be aware that 
+[fluent interfaces are evil](https://ocramius.github.io/blog/fluent-interfaces-are-evil/).
  
 ```php
 public function create(string $username, array $param) {
+  // send the Tweet to Fake Twitter API
+  // ...
 }
 
-$builder = new TweetBuilder();
-$builder->setStuff('stuff');
+$builder = (new TweetBuilder())
+  ->setMessage('foobar');
+  ->addHashTag('stuff');
+  ->addHashTag('test');
+  ->setLocation('Stockhom/Sweden')
+;
 
 // ...
-$api->create('foobar', $builder->toArray());
+$api->create('foobar', $builder->build());
 ```
-
 
 ## License
 
