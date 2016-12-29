@@ -73,7 +73,6 @@ final class HttpClientConfigurator
 
         if (null !== $this->apiKey) {
             $this->prependPlugin(new Plugin\AuthenticationPlugin(new Authentication\Bearer($this->apiKey)));
-
         }
 
         return new PluginClient($this->httpClient, $this->plugins);
