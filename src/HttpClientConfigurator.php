@@ -47,6 +47,11 @@ final class HttpClientConfigurator
     private $httpClient;
 
     /**
+     * @var Plugin[]
+     */
+    private $plugins;
+
+    /**
      * @param HttpClient|null $httpClient
      * @param UriFactory|null $uriFactory
      */
@@ -61,18 +66,17 @@ final class HttpClientConfigurator
      */
     public function createConfiguredClient(): HttpClient
     {
-        $plugins = [
-            new Plugin\AddHostPlugin($this->uriFactory->createUri($this->endpoint)),
-            new Plugin\HeaderDefaultsPlugin([
-                'User-Agent' => 'api-php/boilerplate (https://github.com/api-php/boilerplate)',
-            ]),
-        ];
+        $this->prependPlugin(new Plugin\AddHostPlugin($this->uriFactory->createUri($this->endpoint)));
+        $this->prependPlugin(new Plugin\HeaderDefaultsPlugin([
+            'User-Agent' => 'api-php/boilerplate (https://github.com/api-php/boilerplate)',
+        ]));
 
         if (null !== $this->apiKey) {
-            $plugins[] = new Plugin\AuthenticationPlugin(new Authentication\Bearer($this->apiKey));
+            $this->prependPlugin(new Plugin\AuthenticationPlugin(new Authentication\Bearer($this->apiKey)));
+
         }
 
-        return new PluginClient($this->httpClient, $plugins);
+        return new PluginClient($this->httpClient, $this->plugins);
     }
 
     /**
@@ -95,6 +99,30 @@ final class HttpClientConfigurator
     public function setApiKey(string $apiKey)
     {
         $this->apiKey = $apiKey;
+
+        return $this;
+    }
+
+    /**
+     * @param Plugin $plugin
+     *
+     * @return HttpClientConfigurator
+     */
+    public function appendPlugin(Plugin $plugin)
+    {
+        $this->plugins[] = $plugin;
+
+        return $this;
+    }
+
+    /**
+     * @param Plugin $plugin
+     *
+     * @return HttpClientConfigurator
+     */
+    public function prependPlugin(Plugin $plugin)
+    {
+        array_unshift($this->plugins, $plugin);
 
         return $this;
     }
