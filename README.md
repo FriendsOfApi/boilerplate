@@ -53,6 +53,51 @@ The end user chooses which hydrator to use. The default one should return domain
 
 The request builder will build request with multipart streams when necessary. 
 
+### Domain objects as parameters
+
+If the API requires lots of parameters for a specific endpoint it could be tempting 
+to allow a domain object as parameter to that endpoint. 
+
+```php
+public function create(string $username, Tweet $model) {
+}
+
+$model = new Tweet();
+$model->setStuff('stuff');
+// ...
+$api->create('foobar', $model);
+```
+
+The approach above is not preferred since it overhead to create the Tweet object. 
+It could also conflict with the application developers' Tweet object. Instead of 
+forcing the users to use your Tweet object you should use an array in the endpoint 
+parameter. 
+
+```php
+public function create(string $username, array $param) {
+}
+
+$param['stuff' => 'stuff'];
+// ...
+$api->create('foobar', $param);
+```
+
+If you want to be helpful you could provide a `TweetBuilder` that will build the 
+`$param` array in a fluent manner. This is good when the `$param` array is complex. 
+ 
+ 
+```php
+public function create(string $username, array $param) {
+}
+
+$builder = new TweetBuilder();
+$builder->setStuff('stuff');
+
+// ...
+$api->create('foobar', $builder->toArray());
+```
+
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
