@@ -51,7 +51,9 @@ The end user chooses which hydrator to use. The default one should return domain
 
 ### Request builder
 
-The request builder will build request with multipart streams when necessary. 
+The request builder will build request with multipart streams when necessary. If 
+the API server does not require multipart streams you should remove the `RequestBuilder` 
+and replace it with a `RequestFactory`. 
 
 ## License
 
