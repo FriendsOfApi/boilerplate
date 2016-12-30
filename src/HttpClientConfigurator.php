@@ -130,6 +130,7 @@ final class HttpClientConfigurator
      */
     public function prependPlugin(Plugin ...$plugin)
     {
+        $plugin = array_reverse($plugin);
         foreach ($plugin as $p) {
             array_unshift($this->prependPlugins, $p);
         }

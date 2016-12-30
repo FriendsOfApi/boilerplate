@@ -71,7 +71,7 @@ class HttpClientConfiguratorTest extends \PHPUnit_Framework_TestCase
         $hcc->prependPlugin($plugin0, $plugin1);
         $plugins = NSA::getProperty($hcc, 'prependPlugins');
         $this->assertCount(2, $plugins);
-        $this->assertEquals($plugin0, $plugins[1]);
-        $this->assertEquals($plugin1, $plugins[0]);
+        $this->assertEquals($plugin0, $plugins[0]);
+        $this->assertEquals($plugin1, $plugins[1]);
     }
 }
