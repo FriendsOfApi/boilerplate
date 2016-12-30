@@ -114,9 +114,11 @@ final class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function appendPlugin(Plugin $plugin)
+    public function appendPlugin(Plugin ...$plugin)
     {
-        $this->appendPlugins[] = $plugin;
+        foreach ($plugin as $p) {
+            $this->appendPlugins[] = $p;
+        }
 
         return $this;
     }
@@ -126,9 +128,11 @@ final class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function prependPlugin(Plugin $plugin)
+    public function prependPlugin(Plugin ...$plugin)
     {
-        array_unshift($this->prependPlugins, $plugin);
+        foreach ($plugin as $p) {
+            array_unshift($this->prependPlugins, $p);
+        }
 
         return $this;
     }
