@@ -55,6 +55,67 @@ The request builder creates a PSR-7 request with a multipart stream when necessa
 If the API does not require multipart streams you should remove the `RequestBuilder` 
 and replace it with a `RequestFactory`. 
 
+### Domain objects as parameters
+
+If the API requires lots of parameters for a specific endpoint it could be tempting 
+to create a domain object and pass it as an argument to that endpoint. 
+
+```php
+public function create(string $username, Tweet $model) {
+    // send the Tweet to Fake Twitter API
+    // ...
+}
+
+$model = new Tweet();
+$model->setMessage('foobar');
+$model->addHashTag('stuff');
+$model->addHashTag('test');
+$model->setLocation('Stockhom/Sweden');
+// ...
+$api->create('foobar', $model);
+```
+
+This approach, however, is not preferred as the created Tweet object is an unnecessary 
+overhead. It could also conflict with the application developers' Tweet object. 
+Also, requests usually don't have the same parameters as responses, so using the 
+same object for both is impossible in most of the cases. Instead of forcing the 
+users to use your Tweet object you should use an array for passing parameters 
+to the request. 
+
+```php
+public function create(string $username, array $param) {
+    // send the Tweet to Fake Twitter API
+    // ...
+}
+
+$param['message' => 'foobar'];
+$param['hashtags' => ['stuff', 'test']];
+$param['location' => 'Stockhom/Sweden'];
+// ...
+$api->create('foobar', $param);
+```
+
+If your parameters are complex, you can provide a TweetBuilder. Since it's a builder, 
+fluent interface might be a good idea here. But be aware that 
+[fluent interfaces are evil](https://ocramius.github.io/blog/fluent-interfaces-are-evil/).
+ 
+```php
+public function create(string $username, array $param) {
+    // send the Tweet to Fake Twitter API
+    // ...
+}
+
+$builder = (new TweetBuilder())
+    ->setMessage('foobar');
+    ->addHashTag('stuff');
+    ->addHashTag('test');
+    ->setLocation('Stockhom/Sweden')
+;
+
+// ...
+$api->create('foobar', $builder->build());
+```
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
