@@ -7,7 +7,7 @@
 
 namespace FAPI\Boilerplate\Api;
 
-use APIPHP\Boilerplate\Exception;
+use FAPI\Boilerplate\Exception;
 use FAPI\Boilerplate\Exception\InvalidArgumentException;
 use FAPI\Boilerplate\Model\Stats\ShowResponse;
 use FAPI\Boilerplate\Model\Stats\TotalResponse;
