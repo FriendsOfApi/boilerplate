@@ -77,7 +77,7 @@ This approach, however, is not preferred as the created Tweet object is an unnec
 overhead. It could also conflict with the application developers' Tweet object. 
 Also, requests usually don't have the same parameters as responses, so using the 
 same object for both is impossible in most of the cases. Instead of forcing the 
-users to use your Tweet object you should use use an array for passing parameters 
+users to use your Tweet object you should use an array for passing parameters 
 to the request. 
 
 ```php
