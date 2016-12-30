@@ -10,11 +10,11 @@ namespace FAPI\Boilerplate\Api;
 use FAPI\Boilerplate\Exception;
 use FAPI\Boilerplate\Exception\Domain as DomainExceptions;
 use FAPI\Boilerplate\Exception\InvalidArgumentException;
-use FAPI\Boilerplate\Model\Tweet\CreateResponse;
-use FAPI\Boilerplate\Model\Tweet\DeleteResponse;
-use FAPI\Boilerplate\Model\Tweet\IndexResponse;
-use FAPI\Boilerplate\Model\Tweet\ShowResponse;
-use FAPI\Boilerplate\Model\Tweet\UpdateResponse;
+use FAPI\Boilerplate\Model\Tweet\TweetCreated;
+use FAPI\Boilerplate\Model\Tweet\TweetDeleted;
+use FAPI\Boilerplate\Model\Tweet\Tweets;
+use FAPI\Boilerplate\Model\Tweet\Tweet as Model;
+use FAPI\Boilerplate\Model\Tweet\TweetUpdated;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
@@ -24,7 +24,7 @@ class Tweet extends HttpApi
     /**
      * @param array $params
      *
-     * @return IndexResponse
+     * @return Tweets
      *
      * @throws Exception
      */
@@ -41,13 +41,13 @@ class Tweet extends HttpApi
             $this->handleErrors($response);
         }
 
-        return $this->hydrator->hydrate($response, IndexResponse::class);
+        return $this->hydrator->hydrate($response, Tweets::class);
     }
 
     /**
      * @param int $id
      *
-     * @return ShowResponse
+     * @return Model
      *
      * @throws Exception
      */
@@ -68,7 +68,7 @@ class Tweet extends HttpApi
             $this->handleErrors($response);
         }
 
-        return $this->hydrator->hydrate($response, ShowResponse::class);
+        return $this->hydrator->hydrate($response, Model::class);
     }
 
     /**
@@ -76,7 +76,7 @@ class Tweet extends HttpApi
      * @param string $location
      * @param array  $hashtags
      *
-     * @return CreateResponse
+     * @return TweetCreated
      *
      * @throws Exception
      */
@@ -115,7 +115,7 @@ class Tweet extends HttpApi
             }
         }
 
-        return $this->hydrator->hydrate($response, CreateResponse::class);
+        return $this->hydrator->hydrate($response, TweetCreated::class);
     }
 
     /**
@@ -124,7 +124,7 @@ class Tweet extends HttpApi
      * @param string $location
      * @param array  $hashtags
      *
-     * @return UpdateResponse
+     * @return TweetUpdated
      *
      * @throws Exception
      */
@@ -163,13 +163,13 @@ class Tweet extends HttpApi
             }
         }
 
-        return $this->hydrator->hydrate($response, UpdateResponse::class);
+        return $this->hydrator->hydrate($response, TweetUpdated::class);
     }
 
     /**
      * @param int $id
      *
-     * @return DeleteResponse
+     * @return TweetDeleted
      *
      * @throws Exception
      */
@@ -190,6 +190,6 @@ class Tweet extends HttpApi
             $this->handleErrors($response);
         }
 
-        return $this->hydrator->hydrate($response, DeleteResponse::class);
+        return $this->hydrator->hydrate($response, TweetDeleted::class);
     }
 }
