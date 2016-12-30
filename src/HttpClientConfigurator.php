@@ -47,6 +47,16 @@ final class HttpClientConfigurator
     private $httpClient;
 
     /**
+     * @var Plugin[]
+     */
+    private $prependPlugins = [];
+
+    /**
+     * @var Plugin[]
+     */
+    private $appendPlugins = [];
+
+    /**
      * @param HttpClient|null $httpClient
      * @param UriFactory|null $uriFactory
      */
@@ -61,18 +71,18 @@ final class HttpClientConfigurator
      */
     public function createConfiguredClient(): HttpClient
     {
-        $plugins = [
-            new Plugin\AddHostPlugin($this->uriFactory->createUri($this->endpoint)),
-            new Plugin\HeaderDefaultsPlugin([
-                'User-Agent' => 'api-php/boilerplate (https://github.com/api-php/boilerplate)',
-            ]),
-        ];
+        $plugins = $this->prependPlugins;
+
+        $plugins[] = new Plugin\AddHostPlugin($this->uriFactory->createUri($this->endpoint));
+        $plugins[] = new Plugin\HeaderDefaultsPlugin([
+            'User-Agent' => 'api-php/boilerplate (https://github.com/api-php/boilerplate)',
+        ]);
 
         if (null !== $this->apiKey) {
             $plugins[] = new Plugin\AuthenticationPlugin(new Authentication\Bearer($this->apiKey));
         }
 
-        return new PluginClient($this->httpClient, $plugins);
+        return new PluginClient($this->httpClient, array_merge($plugins, $this->appendPlugins));
     }
 
     /**
@@ -95,6 +105,35 @@ final class HttpClientConfigurator
     public function setApiKey(string $apiKey)
     {
         $this->apiKey = $apiKey;
+
+        return $this;
+    }
+
+    /**
+     * @param Plugin $plugin
+     *
+     * @return HttpClientConfigurator
+     */
+    public function appendPlugin(Plugin ...$plugin)
+    {
+        foreach ($plugin as $p) {
+            $this->appendPlugins[] = $p;
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Plugin $plugin
+     *
+     * @return HttpClientConfigurator
+     */
+    public function prependPlugin(Plugin ...$plugin)
+    {
+        $plugin = array_reverse($plugin);
+        foreach ($plugin as $p) {
+            array_unshift($this->prependPlugins, $p);
+        }
 
         return $this;
     }
