@@ -52,7 +52,7 @@ class Stats extends HttpApi
      */
     public function total(array $params = [])
     {
-        $response = $this->httpGet('/v1/stats/total', $params);
+        $response = $this->httpGet('/v1/stats', $params);
 
         if (!$this->hydrator) {
             return $response;

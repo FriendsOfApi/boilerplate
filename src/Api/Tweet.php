@@ -96,7 +96,7 @@ class Tweet extends HttpApi
             'hashtags' => $hashtags,
         ];
 
-        $response = $this->httpPost('/v1/tweets/new', $params);
+        $response = $this->httpPost('/v1/tweets', $params);
 
         if (!$this->hydrator) {
             return $response;
@@ -144,7 +144,7 @@ class Tweet extends HttpApi
             'hashtags' => $hashtags,
         ];
 
-        $response = $this->httpPut(sprintf('/v1/tweets/%d/edit', $id), $params);
+        $response = $this->httpPut(sprintf('/v1/tweets/%d', $id), $params);
 
         if (!$this->hydrator) {
             return $response;
