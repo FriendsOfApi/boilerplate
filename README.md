@@ -60,8 +60,8 @@ to create a domain object and pass it as an argument to that endpoint.
 
 ```php
 public function create(string $username, Tweet $model) {
-  // send the Tweet to Fake Twitter API
-  // ...
+    // send the Tweet to Fake Twitter API
+    // ...
 }
 
 $model = new Tweet();
@@ -82,8 +82,8 @@ to the request.
 
 ```php
 public function create(string $username, array $param) {
-  // send the Tweet to Fake Twitter API
-  // ...
+    // send the Tweet to Fake Twitter API
+    // ...
 }
 
 $param['message' => 'foobar'];
@@ -99,15 +99,15 @@ fluent interface might be a good idea here. But be aware that
  
 ```php
 public function create(string $username, array $param) {
-  // send the Tweet to Fake Twitter API
-  // ...
+    // send the Tweet to Fake Twitter API
+    // ...
 }
 
 $builder = (new TweetBuilder())
-  ->setMessage('foobar');
-  ->addHashTag('stuff');
-  ->addHashTag('test');
-  ->setLocation('Stockhom/Sweden')
+    ->setMessage('foobar');
+    ->addHashTag('stuff');
+    ->addHashTag('test');
+    ->setLocation('Stockhom/Sweden')
 ;
 
 // ...
