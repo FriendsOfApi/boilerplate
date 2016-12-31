@@ -20,7 +20,7 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class Tweet extends HttpApi
+final class Tweet extends HttpApi
 {
     /**
      * @param array $params

@@ -16,7 +16,7 @@ use Psr\Http\Message\ResponseInterface;
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class Stats extends HttpApi
+final class Stats extends HttpApi
 {
     /**
      * @param string $username

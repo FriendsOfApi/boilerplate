@@ -12,7 +12,7 @@ use FAPI\Boilerplate\Model\CreatableFromArray;
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class Tweet implements CreatableFromArray
+final class Tweet implements CreatableFromArray
 {
     private $message;
 
