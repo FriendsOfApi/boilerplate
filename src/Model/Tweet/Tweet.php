@@ -7,12 +7,12 @@
 
 namespace FAPI\Boilerplate\Model\Tweet;
 
+use FAPI\Boilerplate\Model\CreatableFromArray;
+
 /**
- * A representation of a Tweet. It can be shared between multiple responses.
- *
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class Tweet
+class Tweet implements CreatableFromArray
 {
     private $message;
 
@@ -40,7 +40,12 @@ class Tweet
         $this->createdAt = $createdAt;
     }
 
-    public static function create(array $data)
+    /**
+     * @param array $data
+     *
+     * @return Tweet
+     */
+    public static function createFromArray(array $data)
     {
         // TODO some validation on input
 

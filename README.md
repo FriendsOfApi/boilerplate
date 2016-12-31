@@ -15,19 +15,21 @@ Via Composer
 $ composer require api-php/boilerplate
 ```
 
+
 ## Usage
 
-```php
+``` php
 $apiClient = new ApiClient();
-$response = $apiClient->stats()->total();
-echo $response->getCount(); // 22;
+$total = $apiClient->stats()->total();
+echo $total->getCount(); // 22;
 ```
+
 
 ## Example
 
-This repository contains an example API client for FakeTwitter. The API server 
-for FakeTwitter has the following endpoints. 
- 
+This repository contains an example API client for FakeTwitter.
+The API for FakeTwitter has the following endpoints.
+
 | Method | URI | Parameters |
 | ------ | --- | ---------- |
 | GET | /v1/tweets | (string) hashtag |
@@ -41,26 +43,30 @@ for FakeTwitter has the following endpoints.
 
 ## Develop
 
-You should split your API into categories. Each of those categories should have their own class in `API/`. 
-Example `Api/Stats`. The response of any call should be an object in `Resource/Api/X`. Example 
-`Resource/Api/Stats/TotalResponse`.
+APIs are usually split into categories, called **Resources**.
+In your implementation you should also reflect these categories, for example by having their own classes in `Api/`.
+Let's take a look at `Api/Stats` in our case. The response of any call should be an object in `Model/Stats/X`,
+like `Model/Stats/Total`.
+
 
 ### Hydrator
 
 The end user chooses which hydrator to use. The default one should return domain objects.
 
+
 ### Request builder
 
 The request builder creates a PSR-7 request with a multipart stream when necessary
-If the API does not require multipart streams you should remove the `RequestBuilder` 
-and replace it with a `RequestFactory`. 
+If the API does not require multipart streams you should remove the `RequestBuilder`
+and replace it with a `RequestFactory`.
+
 
 ### Domain objects as parameters
 
-If the API requires lots of parameters for a specific endpoint it could be tempting 
-to create a domain object and pass it as an argument to that endpoint. 
+If the API requires lots of parameters for a specific endpoint it could be tempting
+to create a domain object and pass it as an argument to that endpoint.
 
-```php
+``` php
 public function create(string $username, Tweet $model) {
     // send the Tweet to Fake Twitter API
     // ...
@@ -75,14 +81,14 @@ $model->setLocation('Stockhom/Sweden');
 $api->create('foobar', $model);
 ```
 
-This approach, however, is not preferred as the created Tweet object is an unnecessary 
-overhead. It could also conflict with the application developers' Tweet object. 
-Also, requests usually don't have the same parameters as responses, so using the 
-same object for both is impossible in most of the cases. Instead of forcing the 
-users to use your Tweet object you should use an array for passing parameters 
-to the request. 
+This approach, however, is not preferred as the created Tweet object is an unnecessary
+overhead. It could also conflict with the application developers' Tweet object.
+Also, requests usually don't have the same parameters as responses, so using the
+same object for both is impossible in most of the cases. Instead of forcing the
+users to use your Tweet object you should use an array for passing parameters
+to the request.
 
-```php
+``` php
 public function create(string $username, array $param) {
     // send the Tweet to Fake Twitter API
     // ...
@@ -95,11 +101,11 @@ $param['location' => 'Stockhom/Sweden'];
 $api->create('foobar', $param);
 ```
 
-If your parameters are complex, you can provide a TweetBuilder. Since it's a builder, 
-fluent interface might be a good idea here. But be aware that 
+If your parameters are complex, you can provide a TweetBuilder. Since it's a builder,
+fluent interface might be a good idea here. But be aware that
 [fluent interfaces are evil](https://ocramius.github.io/blog/fluent-interfaces-are-evil/).
- 
-```php
+
+``` php
 public function create(string $username, array $param) {
     // send the Tweet to Fake Twitter API
     // ...
@@ -115,6 +121,7 @@ $builder = (new TweetBuilder())
 // ...
 $api->create('foobar', $builder->build());
 ```
+
 
 ## License
 

@@ -12,7 +12,7 @@ use FAPI\Boilerplate\Model\CreatableFromArray;
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-final class TotalResponse implements CreatableFromArray
+final class Total implements CreatableFromArray
 {
     /**
      * @var \DateTime
@@ -44,7 +44,7 @@ final class TotalResponse implements CreatableFromArray
     /**
      * @param array $data
      *
-     * @return TotalResponse
+     * @return Total
      */
     public static function createFromArray(array $data)
     {

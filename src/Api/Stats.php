@@ -9,8 +9,8 @@ namespace FAPI\Boilerplate\Api;
 
 use FAPI\Boilerplate\Exception;
 use FAPI\Boilerplate\Exception\InvalidArgumentException;
-use FAPI\Boilerplate\Model\Stats\ShowResponse;
-use FAPI\Boilerplate\Model\Stats\TotalResponse;
+use FAPI\Boilerplate\Model\Stats\Stat;
+use FAPI\Boilerplate\Model\Stats\Total;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
@@ -21,7 +21,7 @@ class Stats extends HttpApi
      * @param string $username
      * @param array  $params
      *
-     * @return ShowResponse
+     * @return Stat
      *
      * @throws Exception
      */
@@ -42,13 +42,13 @@ class Stats extends HttpApi
             $this->handleErrors($response);
         }
 
-        return $this->hydrator->hydrate($response, ShowResponse::class);
+        return $this->hydrator->hydrate($response, Stat::class);
     }
 
     /**
      * @param array $params
      *
-     * @return TotalResponse
+     * @return Total
      */
     public function total(array $params = [])
     {
@@ -63,6 +63,6 @@ class Stats extends HttpApi
             $this->handleErrors($response);
         }
 
-        return $this->hydrator->hydrate($response, TotalResponse::class);
+        return $this->hydrator->hydrate($response, Total::class);
     }
 }

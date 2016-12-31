@@ -12,7 +12,7 @@ use FAPI\Boilerplate\Model\CreatableFromArray;
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class DeleteResponse implements CreatableFromArray
+class TweetCreated implements CreatableFromArray
 {
     private $message;
 
@@ -27,7 +27,7 @@ class DeleteResponse implements CreatableFromArray
     /**
      * @param array $data
      *
-     * @return DeleteResponse
+     * @return TweetCreated
      */
     public static function createFromArray(array $data)
     {
