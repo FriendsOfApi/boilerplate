@@ -13,7 +13,7 @@ use FAPI\Boilerplate\HttpClientConfigurator;
 use Http\Client\Common\Plugin\HeaderAppendPlugin;
 use Nyholm\NSA;
 
-class HttpClientConfiguratorTest extends \PHPUnit_Framework_TestCase
+final class HttpClientConfiguratorTest extends \PHPUnit_Framework_TestCase
 {
     public function testAppendPlugin()
     {

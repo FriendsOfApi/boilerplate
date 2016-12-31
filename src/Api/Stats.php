@@ -15,7 +15,7 @@ use FAPI\Boilerplate\Model\Stats\Total;
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class Stats extends HttpApi
+final class Stats extends HttpApi
 {
     /**
      * @param string $username

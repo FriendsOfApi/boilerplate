@@ -19,7 +19,7 @@ use FAPI\Boilerplate\Model\Tweet\TweetUpdated;
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-class Tweet extends HttpApi
+final class Tweet extends HttpApi
 {
     /**
      * @param array $params
