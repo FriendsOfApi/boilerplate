@@ -15,6 +15,7 @@ use FAPI\Boilerplate\Model\Tweet\TweetDeleted;
 use FAPI\Boilerplate\Model\Tweet\Tweets;
 use FAPI\Boilerplate\Model\Tweet\Tweet as Model;
 use FAPI\Boilerplate\Model\Tweet\TweetUpdated;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
@@ -24,7 +25,7 @@ class Tweet extends HttpApi
     /**
      * @param array $params
      *
-     * @return Tweets
+     * @return Tweets|ResponseInterface
      *
      * @throws Exception
      */
@@ -47,7 +48,7 @@ class Tweet extends HttpApi
     /**
      * @param int $id
      *
-     * @return Model
+     * @return Model|ResponseInterface
      *
      * @throws Exception
      */
@@ -76,7 +77,7 @@ class Tweet extends HttpApi
      * @param string $location
      * @param array  $hashtags
      *
-     * @return TweetCreated
+     * @return TweetCreated|ResponseInterface
      *
      * @throws Exception
      */
@@ -124,7 +125,7 @@ class Tweet extends HttpApi
      * @param string $location
      * @param array  $hashtags
      *
-     * @return TweetUpdated
+     * @return TweetUpdated|ResponseInterface
      *
      * @throws Exception
      */
@@ -169,7 +170,7 @@ class Tweet extends HttpApi
     /**
      * @param int $id
      *
-     * @return TweetDeleted
+     * @return TweetDeleted|ResponseInterface
      *
      * @throws Exception
      */

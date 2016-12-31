@@ -11,6 +11,7 @@ use FAPI\Boilerplate\Exception;
 use FAPI\Boilerplate\Exception\InvalidArgumentException;
 use FAPI\Boilerplate\Model\Stats\Stat;
 use FAPI\Boilerplate\Model\Stats\Total;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
@@ -21,7 +22,7 @@ class Stats extends HttpApi
      * @param string $username
      * @param array  $params
      *
-     * @return Stat
+     * @return Stat|ResponseInterface
      *
      * @throws Exception
      */
@@ -48,7 +49,9 @@ class Stats extends HttpApi
     /**
      * @param array $params
      *
-     * @return Total
+     * @return Total|ResponseInterface
+     *
+     * @throws Exception
      */
     public function total(array $params = [])
     {
