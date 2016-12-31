@@ -7,8 +7,8 @@
 
 namespace FAPI\Boilerplate\Api;
 
-use APIPHP\Boilerplate\Exception\Domain as DomainExceptions;
-use APIPHP\Boilerplate\Exception\DomainException;
+use FAPI\Boilerplate\Exception\Domain as DomainExceptions;
+use FAPI\Boilerplate\Exception\DomainException;
 use FAPI\Boilerplate\Hydrator\NoopHydrator;
 use Http\Client\HttpClient;
 use FAPI\Boilerplate\Hydrator\Hydrator;
