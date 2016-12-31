@@ -52,7 +52,7 @@ final class Tweet extends HttpApi
      *
      * @throws Exception
      */
-    public function show(int $id)
+    public function get(int $id)
     {
         if (empty($id)) {
             throw new InvalidArgumentException('Id cannot be empty');

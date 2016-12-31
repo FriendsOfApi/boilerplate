@@ -26,7 +26,7 @@ final class Stats extends HttpApi
      *
      * @throws Exception
      */
-    public function show(string $username, array $params = [])
+    public function get(string $username, array $params = [])
     {
         if (empty($username)) {
             throw new InvalidArgumentException('Username cannot be empty');
