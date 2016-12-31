@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
@@ -58,7 +60,7 @@ abstract class HttpApi
      *
      * @return ResponseInterface
      */
-    protected function httpGet($path, array $parameters = [], array $requestHeaders = []): ResponseInterface
+    protected function httpGet(string $path, array $parameters = [], array $requestHeaders = []): ResponseInterface
     {
         if (count($parameters) > 0) {
             $path .= '?'.http_build_query($parameters);
@@ -78,7 +80,7 @@ abstract class HttpApi
      *
      * @return ResponseInterface
      */
-    protected function httpPost($path, array $parameters = [], array $requestHeaders = []): ResponseInterface
+    protected function httpPost(string $path, array $parameters = [], array $requestHeaders = []): ResponseInterface
     {
         return $this->httpPostRaw($path, $this->createJsonBody($parameters), $requestHeaders);
     }
@@ -92,7 +94,7 @@ abstract class HttpApi
      *
      * @return ResponseInterface
      */
-    protected function httpPostRaw($path, $body, array $requestHeaders = []): ResponseInterface
+    protected function httpPostRaw(string $path, $body, array $requestHeaders = []): ResponseInterface
     {
         return $response = $this->httpClient->sendRequest(
             $this->requestBuilder->create('POST', $path, $requestHeaders, $body)
@@ -108,7 +110,7 @@ abstract class HttpApi
      *
      * @return ResponseInterface
      */
-    protected function httpPut($path, array $parameters = [], array $requestHeaders = []): ResponseInterface
+    protected function httpPut(string $path, array $parameters = [], array $requestHeaders = []): ResponseInterface
     {
         return $this->httpClient->sendRequest(
             $this->requestBuilder->create('PUT', $path, $requestHeaders, $this->createJsonBody($parameters))
@@ -124,7 +126,7 @@ abstract class HttpApi
      *
      * @return ResponseInterface
      */
-    protected function httpDelete($path, array $parameters = [], array $requestHeaders = []): ResponseInterface
+    protected function httpDelete(string $path, array $parameters = [], array $requestHeaders = []): ResponseInterface
     {
         return $this->httpClient->sendRequest(
             $this->requestBuilder->create('DELETE', $path, $requestHeaders, $this->createJsonBody($parameters))

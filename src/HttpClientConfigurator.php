@@ -90,7 +90,7 @@ final class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function setEndpoint(string $endpoint)
+    public function setEndpoint(string $endpoint): HttpClientConfigurator
     {
         $this->endpoint = $endpoint;
 
@@ -102,7 +102,7 @@ final class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function setApiKey(string $apiKey)
+    public function setApiKey(string $apiKey): HttpClientConfigurator
     {
         $this->apiKey = $apiKey;
 
@@ -114,7 +114,7 @@ final class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function appendPlugin(Plugin ...$plugin)
+    public function appendPlugin(Plugin ...$plugin): HttpClientConfigurator
     {
         foreach ($plugin as $p) {
             $this->appendPlugins[] = $p;
@@ -128,7 +128,7 @@ final class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function prependPlugin(Plugin ...$plugin)
+    public function prependPlugin(Plugin ...$plugin): HttpClientConfigurator
     {
         $plugin = array_reverse($plugin);
         foreach ($plugin as $p) {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
@@ -34,7 +36,7 @@ final class Stat implements CreatableFromArray
      * @param \DateTime $end
      * @param int       $count
      */
-    private function __construct(\DateTime $start, \DateTime $end, $count)
+    private function __construct(\DateTime $start, \DateTime $end, int $count)
     {
         $this->start = $start;
         $this->end = $end;
@@ -46,7 +48,7 @@ final class Stat implements CreatableFromArray
      *
      * @return Stat
      */
-    public static function createFromArray(array $data)
+    public static function createFromArray(array $data): Stat
     {
         return new self(new \DateTime($data['start']), new \DateTime($data['end']), $data['count']);
     }
@@ -54,7 +56,7 @@ final class Stat implements CreatableFromArray
     /**
      * @return \DateTime
      */
-    public function getStart()
+    public function getStart(): \DateTime
     {
         return $this->start;
     }
@@ -62,7 +64,7 @@ final class Stat implements CreatableFromArray
     /**
      * @return \DateTime
      */
-    public function getEnd()
+    public function getEnd(): \DateTime
     {
         return $this->end;
     }
@@ -70,7 +72,7 @@ final class Stat implements CreatableFromArray
     /**
      * @return int
      */
-    public function getCount()
+    public function getCount(): int
     {
         return $this->count;
     }

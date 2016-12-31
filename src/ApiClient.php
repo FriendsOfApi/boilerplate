@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
@@ -73,7 +75,7 @@ final class ApiClient
      *
      * @return ApiClient
      */
-    public static function create(string $apiKey): self
+    public static function create(string $apiKey): ApiClient
     {
         $httpClientConfigurator = (new HttpClientConfigurator())->setApiKey($apiKey);
 
