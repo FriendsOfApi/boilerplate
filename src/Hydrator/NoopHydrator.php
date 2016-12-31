@@ -10,7 +10,7 @@ namespace FAPI\Boilerplate\Hydrator;
 use Psr\Http\Message\ResponseInterface;
 
 /**
- * Do not hydrate to any object at all. Just return a PSR-7 response.
+ * Do not hydrate to any object at all.
  *
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
@@ -20,10 +20,10 @@ final class NoopHydrator implements Hydrator
      * @param ResponseInterface $response
      * @param string            $class
      *
-     * @return ResponseInterface
+     * @throws \LogicException
      */
-    public function hydrate(ResponseInterface $response, string $class): ResponseInterface
+    public function hydrate(ResponseInterface $response, string $class)
     {
-        return $response;
+        throw new \LogicException('The Noop Hydrator should never be called');
     }
 }
