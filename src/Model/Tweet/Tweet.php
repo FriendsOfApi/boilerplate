@@ -14,14 +14,29 @@ use FAPI\Boilerplate\Model\CreatableFromArray;
  */
 final class Tweet implements CreatableFromArray
 {
+    /**
+     * @var string
+     */
     private $message;
 
+    /**
+     * @var string
+     */
     private $user;
 
+    /**
+     * @var array
+     */
     private $hashtags;
 
+    /**
+     * @var string
+     */
     private $location;
 
+    /**
+     * @var \DateTime
+     */
     private $createdAt;
 
     /**

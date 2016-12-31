@@ -14,6 +14,9 @@ use FAPI\Boilerplate\Model\CreatableFromArray;
  */
 final class TweetUpdated implements CreatableFromArray
 {
+    /**
+     * @var string
+     */
     private $message;
 
     /**
