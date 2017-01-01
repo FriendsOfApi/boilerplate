@@ -17,12 +17,12 @@ use FAPI\Boilerplate\Model\CreatableFromArray;
 final class Total implements CreatableFromArray
 {
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     private $start;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     private $end;
 
@@ -32,11 +32,11 @@ final class Total implements CreatableFromArray
     private $count;
 
     /**
-     * @param \DateTime $start
-     * @param \DateTime $end
-     * @param int       $count
+     * @param \DateTimeInterface $start
+     * @param \DateTimeInterface $end
+     * @param int                $count
      */
-    private function __construct(\DateTime $start, \DateTime $end, int $count)
+    private function __construct(\DateTimeInterface $start, \DateTimeInterface $end, int $count)
     {
         $this->start = $start;
         $this->end = $end;
@@ -50,21 +50,21 @@ final class Total implements CreatableFromArray
      */
     public static function createFromArray(array $data): Total
     {
-        return new self(new \DateTime($data['start']), new \DateTime($data['end']), $data['count']);
+        return new self(new \DateTimeImmutable($data['start']), new \DateTimeImmutable($data['end']), $data['count']);
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getStart(): \DateTime
+    public function getStart(): \DateTimeInterface
     {
         return $this->start;
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getEnd(): \DateTime
+    public function getEnd(): \DateTimeInterface
     {
         return $this->end;
     }
