@@ -9,7 +9,7 @@ declare(strict_types=1);
 
 namespace FAPI\Boilerplate;
 
-use FAPI\Boilerplate\Api\Stats;
+use FAPI\Boilerplate\Api\Stat;
 use FAPI\Boilerplate\Api\Tweet;
 use FAPI\Boilerplate\Hydrator\ModelHydrator;
 use FAPI\Boilerplate\Hydrator\Hydrator;
@@ -91,10 +91,10 @@ final class ApiClient
     }
 
     /**
-     * @return Api\Stats
+     * @return Api\Stat
      */
-    public function stats(): Stats
+    public function stats(): Stat
     {
-        return new Api\Stats($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Stat($this->httpClient, $this->hydrator, $this->requestBuilder);
     }
 }

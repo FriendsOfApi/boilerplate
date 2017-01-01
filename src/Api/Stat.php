@@ -11,20 +11,20 @@ namespace FAPI\Boilerplate\Api;
 
 use FAPI\Boilerplate\Exception;
 use FAPI\Boilerplate\Exception\InvalidArgumentException;
-use FAPI\Boilerplate\Model\Stats\Stat;
+use FAPI\Boilerplate\Model\Stats\Stat as StatModel;
 use FAPI\Boilerplate\Model\Stats\Total;
 use Psr\Http\Message\ResponseInterface;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-final class Stats extends HttpApi
+final class Stat extends HttpApi
 {
     /**
      * @param string $username
      * @param array  $params
      *
-     * @return Stat|ResponseInterface
+     * @return StatModel|ResponseInterface
      *
      * @throws Exception
      */
@@ -45,7 +45,7 @@ final class Stats extends HttpApi
             $this->handleErrors($response);
         }
 
-        return $this->hydrator->hydrate($response, Stat::class);
+        return $this->hydrator->hydrate($response, StatModel::class);
     }
 
     /**
