@@ -15,7 +15,7 @@ use FAPI\Boilerplate\Exception\InvalidArgumentException;
 use FAPI\Boilerplate\Model\Tweet\TweetCreated;
 use FAPI\Boilerplate\Model\Tweet\TweetDeleted;
 use FAPI\Boilerplate\Model\Tweet\Tweets;
-use FAPI\Boilerplate\Model\Tweet\Tweet as Model;
+use FAPI\Boilerplate\Model\Tweet\Tweet as TweetModel;
 use FAPI\Boilerplate\Model\Tweet\TweetUpdated;
 use Psr\Http\Message\ResponseInterface;
 
@@ -50,7 +50,7 @@ final class Tweet extends HttpApi
     /**
      * @param int $id
      *
-     * @return Model|ResponseInterface
+     * @return TweetModel|ResponseInterface
      *
      * @throws Exception
      */
@@ -71,7 +71,7 @@ final class Tweet extends HttpApi
             $this->handleErrors($response);
         }
 
-        return $this->hydrator->hydrate($response, Model::class);
+        return $this->hydrator->hydrate($response, TweetModel::class);
     }
 
     /**
