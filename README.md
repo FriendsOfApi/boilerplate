@@ -1,10 +1,10 @@
-# API-php Boilerplate
+# FriendsOfApi Boilerplate
 
-[![Latest Version](https://img.shields.io/github/release/api-php/boilerplate.svg?style=flat-square)](https://github.com/api-php/boilerplate/releases)
-[![Build Status](https://img.shields.io/travis/api-php/boilerplate.svg?style=flat-square)](https://travis-ci.org/api-php/boilerplate)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/api-php/boilerplate.svg?style=flat-square)](https://scrutinizer-ci.com/g/api-php/boilerplate)
-[![Quality Score](https://img.shields.io/scrutinizer/g/api-php/boilerplate.svg?style=flat-square)](https://scrutinizer-ci.com/g/api-php/boilerplate)
-[![Total Downloads](https://img.shields.io/packagist/dt/api-php/boilerplate.svg?style=flat-square)](https://packagist.org/packages/api-php/boilerplate)
+[![Latest Version](https://img.shields.io/github/release/FriendsOfApi/boilerplate.svg?style=flat-square)](https://github.com/FriendsOfApi/boilerplate/releases)
+[![Build Status](https://img.shields.io/travis/FriendsOfApi/boilerplate.svg?style=flat-square)](https://travis-ci.org/FriendsOfApi/boilerplate)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/FriendsOfApi/boilerplate.svg?style=flat-square)](https://scrutinizer-ci.com/g/FriendsOfApi/boilerplate)
+[![Quality Score](https://img.shields.io/scrutinizer/g/FriendsOfApi/boilerplate.svg?style=flat-square)](https://scrutinizer-ci.com/g/FriendsOfApi/boilerplate)
+[![Total Downloads](https://img.shields.io/packagist/dt/friendsofapi/boilerplate.svg?style=flat-square)](https://packagist.org/packages/friendsofapi/boilerplate)
 
 
 ## Install
@@ -12,7 +12,7 @@
 Via Composer
 
 ``` bash
-$ composer require api-php/boilerplate
+$ composer require friendsofapi/boilerplate
 ```
 
 

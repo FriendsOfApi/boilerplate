@@ -75,7 +75,7 @@ final class HttpClientConfigurator
 
         $plugins[] = new Plugin\AddHostPlugin($this->uriFactory->createUri($this->endpoint));
         $plugins[] = new Plugin\HeaderDefaultsPlugin([
-            'User-Agent' => 'api-php/boilerplate (https://github.com/api-php/boilerplate)',
+            'User-Agent' => 'FriendsOfApi/boilerplate (https://github.com/FriendsOfApi/boilerplate)',
         ]);
 
         if (null !== $this->apiKey) {
