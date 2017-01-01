@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1);
+declare(strict_types=1);
 
 /*
  * This software may be modified and distributed under the terms
@@ -54,9 +54,9 @@ abstract class HttpApi
     /**
      * Send a GET request with query parameters.
      *
-     * @param string $path           Request path.
-     * @param array  $params         GET parameters.
-     * @param array  $requestHeaders Request Headers.
+     * @param string $path           Request path
+     * @param array  $params         GET parameters
+     * @param array  $requestHeaders Request Headers
      *
      * @return ResponseInterface
      */
@@ -74,9 +74,9 @@ abstract class HttpApi
     /**
      * Send a POST request with JSON-encoded parameters.
      *
-     * @param string $path           Request path.
-     * @param array  $params         POST parameters to be JSON encoded.
-     * @param array  $requestHeaders Request headers.
+     * @param string $path           Request path
+     * @param array  $params         POST parameters to be JSON encoded
+     * @param array  $requestHeaders Request headers
      *
      * @return ResponseInterface
      */
@@ -88,9 +88,9 @@ abstract class HttpApi
     /**
      * Send a POST request with raw data.
      *
-     * @param string       $path           Request path.
-     * @param array|string $body           Request body.
-     * @param array        $requestHeaders Request headers.
+     * @param string       $path           Request path
+     * @param array|string $body           Request body
+     * @param array        $requestHeaders Request headers
      *
      * @return ResponseInterface
      */
@@ -104,9 +104,9 @@ abstract class HttpApi
     /**
      * Send a PUT request with JSON-encoded parameters.
      *
-     * @param string $path           Request path.
-     * @param array  $params         POST parameters to be JSON encoded.
-     * @param array  $requestHeaders Request headers.
+     * @param string $path           Request path
+     * @param array  $params         POST parameters to be JSON encoded
+     * @param array  $requestHeaders Request headers
      *
      * @return ResponseInterface
      */
@@ -120,9 +120,9 @@ abstract class HttpApi
     /**
      * Send a DELETE request with JSON-encoded parameters.
      *
-     * @param string $path           Request path.
-     * @param array  $params         POST parameters to be JSON encoded.
-     * @param array  $requestHeaders Request headers.
+     * @param string $path           Request path
+     * @param array  $params         POST parameters to be JSON encoded
+     * @param array  $requestHeaders Request headers
      *
      * @return ResponseInterface
      */
