@@ -11,8 +11,8 @@ namespace FAPI\Boilerplate\Api;
 
 use FAPI\Boilerplate\Exception;
 use FAPI\Boilerplate\Exception\InvalidArgumentException;
-use FAPI\Boilerplate\Model\Stats\Stat as StatModel;
-use FAPI\Boilerplate\Model\Stats\Total;
+use FAPI\Boilerplate\Model\Stat\Stat as StatModel;
+use FAPI\Boilerplate\Model\Stat\Total;
 use Psr\Http\Message\ResponseInterface;
 
 /**
