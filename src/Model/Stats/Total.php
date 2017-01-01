@@ -34,7 +34,7 @@ final class Total implements CreatableFromArray
     /**
      * @param \DateTimeInterface $start
      * @param \DateTimeInterface $end
-     * @param int       $count
+     * @param int                $count
      */
     private function __construct(\DateTimeInterface $start, \DateTimeInterface $end, int $count)
     {

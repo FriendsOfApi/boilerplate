@@ -42,10 +42,10 @@ final class Tweet implements CreatableFromArray
     private $createdAt;
 
     /**
-     * @param string    $message
-     * @param string    $user
-     * @param string    $location
-     * @param array     $hashtags
+     * @param string             $message
+     * @param string             $user
+     * @param string             $location
+     * @param array              $hashtags
      * @param \DateTimeInterface $createdAt
      */
     private function __construct(string $message, string $user, string $location, array $hashtags, \DateTimeInterface $createdAt)
