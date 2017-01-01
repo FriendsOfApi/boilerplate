@@ -37,7 +37,7 @@ final class Tweet implements CreatableFromArray
     private $location;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      */
     private $createdAt;
 
@@ -46,9 +46,9 @@ final class Tweet implements CreatableFromArray
      * @param string    $user
      * @param string    $location
      * @param array     $hashtags
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt
      */
-    private function __construct(string $message, string $user, string $location, array $hashtags, \DateTime $createdAt)
+    private function __construct(string $message, string $user, string $location, array $hashtags, \DateTimeInterface $createdAt)
     {
         $this->message = $message;
         $this->user = $user;
@@ -66,7 +66,7 @@ final class Tweet implements CreatableFromArray
     {
         // TODO some validation on input
 
-        return new self($data['message'], $data['user'], $data['location'], $data['hashtags'], new \DateTime($data['timestamp']));
+        return new self($data['message'], $data['user'], $data['location'], $data['hashtags'], new \DateTimeImmutable($data['timestamp']));
     }
 
     /**
@@ -102,9 +102,9 @@ final class Tweet implements CreatableFromArray
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt(): \DateTimeInterface
     {
         return $this->createdAt;
     }
