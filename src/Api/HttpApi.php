@@ -54,16 +54,16 @@ abstract class HttpApi
     /**
      * Send a GET request with query parameters.
      *
-     * @param string $path           Request path.
-     * @param array  $parameters     GET parameters.
-     * @param array  $requestHeaders Request Headers.
+     * @param string $path           Request path
+     * @param array  $params         GET parameters
+     * @param array  $requestHeaders Request Headers
      *
      * @return ResponseInterface
      */
-    protected function httpGet(string $path, array $parameters = [], array $requestHeaders = []): ResponseInterface
+    protected function httpGet(string $path, array $params = [], array $requestHeaders = []): ResponseInterface
     {
-        if (count($parameters) > 0) {
-            $path .= '?'.http_build_query($parameters);
+        if (count($params) > 0) {
+            $path .= '?'.http_build_query($params);
         }
 
         return $this->httpClient->sendRequest(
@@ -74,23 +74,23 @@ abstract class HttpApi
     /**
      * Send a POST request with JSON-encoded parameters.
      *
-     * @param string $path           Request path.
-     * @param array  $parameters     POST parameters to be JSON encoded.
-     * @param array  $requestHeaders Request headers.
+     * @param string $path           Request path
+     * @param array  $params         POST parameters to be JSON encoded
+     * @param array  $requestHeaders Request headers
      *
      * @return ResponseInterface
      */
-    protected function httpPost(string $path, array $parameters = [], array $requestHeaders = []): ResponseInterface
+    protected function httpPost(string $path, array $params = [], array $requestHeaders = []): ResponseInterface
     {
-        return $this->httpPostRaw($path, $this->createJsonBody($parameters), $requestHeaders);
+        return $this->httpPostRaw($path, $this->createJsonBody($params), $requestHeaders);
     }
 
     /**
      * Send a POST request with raw data.
      *
-     * @param string       $path           Request path.
-     * @param array|string $body           Request body.
-     * @param array        $requestHeaders Request headers.
+     * @param string       $path           Request path
+     * @param array|string $body           Request body
+     * @param array        $requestHeaders Request headers
      *
      * @return ResponseInterface
      */
@@ -104,45 +104,45 @@ abstract class HttpApi
     /**
      * Send a PUT request with JSON-encoded parameters.
      *
-     * @param string $path           Request path.
-     * @param array  $parameters     POST parameters to be JSON encoded.
-     * @param array  $requestHeaders Request headers.
+     * @param string $path           Request path
+     * @param array  $params         POST parameters to be JSON encoded
+     * @param array  $requestHeaders Request headers
      *
      * @return ResponseInterface
      */
-    protected function httpPut(string $path, array $parameters = [], array $requestHeaders = []): ResponseInterface
+    protected function httpPut(string $path, array $params = [], array $requestHeaders = []): ResponseInterface
     {
         return $this->httpClient->sendRequest(
-            $this->requestBuilder->create('PUT', $path, $requestHeaders, $this->createJsonBody($parameters))
+            $this->requestBuilder->create('PUT', $path, $requestHeaders, $this->createJsonBody($params))
         );
     }
 
     /**
      * Send a DELETE request with JSON-encoded parameters.
      *
-     * @param string $path           Request path.
-     * @param array  $parameters     POST parameters to be JSON encoded.
-     * @param array  $requestHeaders Request headers.
+     * @param string $path           Request path
+     * @param array  $params         POST parameters to be JSON encoded
+     * @param array  $requestHeaders Request headers
      *
      * @return ResponseInterface
      */
-    protected function httpDelete(string $path, array $parameters = [], array $requestHeaders = []): ResponseInterface
+    protected function httpDelete(string $path, array $params = [], array $requestHeaders = []): ResponseInterface
     {
         return $this->httpClient->sendRequest(
-            $this->requestBuilder->create('DELETE', $path, $requestHeaders, $this->createJsonBody($parameters))
+            $this->requestBuilder->create('DELETE', $path, $requestHeaders, $this->createJsonBody($params))
         );
     }
 
     /**
      * Create a JSON encoded version of an array of parameters.
      *
-     * @param array $parameters Request parameters
+     * @param array $params Request parameters
      *
      * @return null|string
      */
-    private function createJsonBody(array $parameters)
+    private function createJsonBody(array $params)
     {
-        return (count($parameters) === 0) ? null : json_encode($parameters, empty($parameters) ? JSON_FORCE_OBJECT : 0);
+        return (count($params) === 0) ? null : json_encode($params, empty($params) ? JSON_FORCE_OBJECT : 0);
     }
 
     /**
