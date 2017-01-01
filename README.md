@@ -12,7 +12,7 @@
 Via Composer
 
 ``` bash
-$ composer require FriendsOfApi/boilerplate
+$ composer require friendsofapi/boilerplate
 ```
 
 
