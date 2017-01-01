@@ -7,7 +7,7 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-namespace FAPI\Boilerplate\Model\Stats;
+namespace FAPI\Boilerplate\Model\Stat;
 
 use FAPI\Boilerplate\Model\CreatableFromArray;
 
